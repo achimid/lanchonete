@@ -2,6 +2,7 @@ package br.com.achimid.lanchonete.api.venda;
 
 import br.com.achimid.lanchonete.api.base.EntidadeBase;
 import br.com.achimid.lanchonete.api.produto.Produto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.NumberFormat;
@@ -19,6 +20,7 @@ public class VendaItem extends EntidadeBase {
     @GeneratedValue
     private Long id;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "venda_id_venda")
     private Venda venda;

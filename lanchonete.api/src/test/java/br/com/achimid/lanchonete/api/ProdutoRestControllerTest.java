@@ -64,8 +64,6 @@ public class ProdutoRestControllerTest extends TestBase {
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-        this.produtoRepository.deleteAll();
-        this.categoriaRepository.deleteAll();
         produtos.add(this.produtoRepository.save(getNewProduto()));
     }
 

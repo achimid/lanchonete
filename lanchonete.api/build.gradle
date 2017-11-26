@@ -10,6 +10,10 @@ buildscript {
 	}
 }
 
+plugins {
+	id 'org.springframework.boot' version '1.5.8.RELEASE'
+}
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
@@ -38,3 +42,10 @@ dependencies {
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
+
+jar {
+	baseName = 'lanchoneteAPI'
+	version =  '0.1.0'
+}
+
+

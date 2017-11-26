@@ -39,6 +39,7 @@ public class VendaRestControllerTest extends TestBase {
     @Autowired
     private VendaService vendaService;
 
+    private List<Venda> vendas = new ArrayList<>();
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -83,6 +84,8 @@ public class VendaRestControllerTest extends TestBase {
     @Before
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
+
+        this.vendas.add(this.vendaService.checkouVenda(getNewListVendaItem()));
     }
 
     @Test
@@ -99,6 +102,13 @@ public class VendaRestControllerTest extends TestBase {
     @Test
     public void rest02GetAllVendas() throws Exception {
         mockMvc.perform(get(END_POINT_VENDA)
+                .contentType(contentType))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    public void rest03GetVenda() throws Exception {
+        mockMvc.perform(get(END_POINT_VENDA.concat("/").concat(vendas.get(0).getId().toString()))
                 .contentType(contentType))
                 .andExpect(status().isOk());
     }

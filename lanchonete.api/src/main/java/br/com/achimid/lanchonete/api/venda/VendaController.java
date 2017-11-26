@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/venda")
-public class VendaController {
+public class VendaController implements VendaControllerDoc {
 
     @Autowired
     private VendaService vendaService;
@@ -18,6 +18,11 @@ public class VendaController {
     @GetMapping
     public List<Venda> index(){
         return vendaService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Venda getVenda(@PathVariable Long id){
+        return vendaService.findOne(id);
     }
 
     @PostMapping

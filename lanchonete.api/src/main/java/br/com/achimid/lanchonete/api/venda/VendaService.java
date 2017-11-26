@@ -21,6 +21,10 @@ public class VendaService {
         return (List<Venda>) vendaRepository.findAll();
     }
 
+    public Venda findOne(Long id){
+        return vendaRepository.findOne(id);
+    }
+
     @Transactional
     public Venda
     checkouVenda(List<VendaItem> listaItens){

@@ -53,9 +53,6 @@ public class CategoriaRestControllerTest extends TestBase {
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-        this.produtoRepository.deleteAll();
-        this.categoriaRepository.deleteAll();
-
         categorias.add(this.categoriaRepository.save(getNewCategoria()));
     }
 

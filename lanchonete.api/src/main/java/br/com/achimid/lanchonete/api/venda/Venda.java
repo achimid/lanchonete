@@ -1,6 +1,7 @@
 package br.com.achimid.lanchonete.api.venda;
 
 import br.com.achimid.lanchonete.api.base.EntidadeBase;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.format.annotation.NumberFormat;
@@ -23,6 +24,7 @@ public class Venda extends EntidadeBase{
 
     @NotNull(message = "Data nao pode ser nulla")
     @Temporal(value = TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
     private Date dataVenda;
 
     @NotNull(message = "Valor final não pode ser nullo")

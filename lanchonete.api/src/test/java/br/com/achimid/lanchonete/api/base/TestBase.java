@@ -2,6 +2,7 @@ package br.com.achimid.lanchonete.api.base;
 
 import br.com.achimid.lanchonete.api.Application;
 import org.junit.FixMethodOrder;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +54,7 @@ public class TestBase {
                 o, MediaType.APPLICATION_JSON, mockHttpOutputMessage);
         return mockHttpOutputMessage.getBodyAsString();
     }
+
+    @Test
+    public void none(){}
 }
