@@ -17,12 +17,12 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "produto")
-@EqualsAndHashCode(of = "id", callSuper = false)
+@EqualsAndHashCode(of = "idProduto", callSuper = false)
 public class Produto extends EntidadeBase {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long idProduto;
 
     @NotBlank(message = "Informe o nome")
     @NotNull(message = "O nome não pode ser nullo")

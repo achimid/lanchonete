@@ -1,6 +1,7 @@
-package br.com.achimid.lanchonete.api.venda;
+package br.com.achimid.lanchonete.api.compra.venda;
 
-import br.com.achimid.lanchonete.api.produto.Produto;
+import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
+import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -26,11 +27,16 @@ public class VendaController implements VendaControllerDoc {
     }
 
     @PostMapping
-    public HttpEntity<Venda> checkouVenda(@RequestBody List<VendaItem> listaItens){
+    public HttpEntity<Venda> checkouVenda(
+            @RequestBody List<VendaItem> listaItens,
+            @RequestBody List<VendaPagamento> pagamentos){
         if(listaItens == null || listaItens.isEmpty())
             throw new IllegalArgumentException("Lista de itens inválidos");
 
-        Venda venda = vendaService.checkouVenda(listaItens);
+        if(pagamentos == null || pagamentos.isEmpty())
+            throw new IllegalArgumentException("Lista de itens inválidos");
+
+        Venda venda = vendaService.checkouVenda(listaItens, pagamentos);
         return ResponseEntity.ok(venda);
     }
 

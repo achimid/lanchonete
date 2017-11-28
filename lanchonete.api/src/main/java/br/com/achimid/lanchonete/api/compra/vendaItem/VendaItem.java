@@ -1,6 +1,7 @@
-package br.com.achimid.lanchonete.api.venda;
+package br.com.achimid.lanchonete.api.compra.vendaItem;
 
 import br.com.achimid.lanchonete.api.base.EntidadeBase;
+import br.com.achimid.lanchonete.api.compra.venda.Venda;
 import br.com.achimid.lanchonete.api.produto.Produto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -13,12 +14,12 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "venda_item")
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "idVendaItem")
 public class VendaItem extends EntidadeBase {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long idVendaItem;
 
     @JsonIgnore
     @ManyToOne

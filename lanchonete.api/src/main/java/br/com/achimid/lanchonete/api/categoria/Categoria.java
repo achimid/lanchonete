@@ -11,12 +11,12 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name = "categoria")
-@EqualsAndHashCode(of = "id", callSuper = false)
+@EqualsAndHashCode(of = "idCategoria", callSuper = false)
 public class Categoria extends EntidadeBase{
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long idCategoria;
 
     @NotNull(message = "O nome não pode ser nullo.")
     @NotEmpty(message = "Informe o campo nome.")

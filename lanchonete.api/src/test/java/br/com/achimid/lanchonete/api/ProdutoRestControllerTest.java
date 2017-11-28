@@ -26,6 +26,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class ProdutoRestControllerTest extends TestBase {
 
     private Produto produto;
@@ -102,7 +103,7 @@ public class ProdutoRestControllerTest extends TestBase {
 
     @Test
     public void rest04GetProduto() throws Exception {
-        mockMvc.perform(get(END_POINT_PRODUTO.concat("/").concat(produtos.get(0).getId().toString()))
+        mockMvc.perform(get(END_POINT_PRODUTO.concat("/").concat(produtos.get(0).getIdProduto().toString()))
                 .contentType(contentType))
                 .andExpect(jsonPath("$.nome", is("Nome do produto")))
                 .andExpect(status().isOk());
@@ -110,7 +111,7 @@ public class ProdutoRestControllerTest extends TestBase {
 
     @Test
     public void rest05DeleteProduto() throws Exception {
-        this.mockMvc.perform(delete(END_POINT_PRODUTO.concat("/").concat(produtos.get(0).getId().toString()))
+        this.mockMvc.perform(delete(END_POINT_PRODUTO.concat("/").concat(produtos.get(0).getIdProduto().toString()))
                 .contentType(contentType))
                 .andExpect(status().isNoContent());
     }

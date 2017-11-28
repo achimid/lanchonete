@@ -1,9 +1,8 @@
-package br.com.achimid.lanchonete.api.venda;
+package br.com.achimid.lanchonete.api.compra.venda;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface VendaItemRepository extends CrudRepository<VendaItem, Long> {
-
+public interface VendaRepository extends CrudRepository<Venda, Long>{
 }

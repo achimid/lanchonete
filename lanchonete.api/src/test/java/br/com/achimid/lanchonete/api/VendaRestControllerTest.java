@@ -3,14 +3,18 @@ package br.com.achimid.lanchonete.api;
 import br.com.achimid.lanchonete.api.base.TestBase;
 import br.com.achimid.lanchonete.api.categoria.Categoria;
 import br.com.achimid.lanchonete.api.categoria.CategoriaRepository;
+import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
+import br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento;
+import br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoRepository;
 import br.com.achimid.lanchonete.api.produto.Produto;
 import br.com.achimid.lanchonete.api.produto.ProdutoRepository;
-import br.com.achimid.lanchonete.api.venda.Venda;
-import br.com.achimid.lanchonete.api.venda.VendaItem;
-import br.com.achimid.lanchonete.api.venda.VendaRepository;
-import br.com.achimid.lanchonete.api.venda.VendaService;
+import br.com.achimid.lanchonete.api.compra.venda.Venda;
+import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
+import br.com.achimid.lanchonete.api.compra.venda.VendaService;
 import org.junit.Before;
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -24,6 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class VendaRestControllerTest extends TestBase {
 
     private List<Venda> produtos = new ArrayList<>();
@@ -37,12 +42,31 @@ public class VendaRestControllerTest extends TestBase {
     private CategoriaRepository categoriaRepository;
 
     @Autowired
+    private FormaPagamentoRepository formaPagamentoRepository;
+
+    @Autowired
     private VendaService vendaService;
 
     private List<Venda> vendas = new ArrayList<>();
 
     @Autowired
     private WebApplicationContext webApplicationContext;
+
+    private List<VendaPagamento> getNewVendaPagamento(){
+        List<VendaPagamento> vendaPagamentos = new ArrayList<>();
+
+        VendaPagamento vendaPagamento = new VendaPagamento();
+        vendaPagamento.setFormaPagamento(formaPagamentoRepository.save(new FormaPagamento("Dinheiro")));
+        vendaPagamento.setValor(new BigDecimal(486.675));
+        vendaPagamentos.add(vendaPagamento);
+
+        vendaPagamento = new VendaPagamento();
+        vendaPagamento.setFormaPagamento(formaPagamentoRepository.save(new FormaPagamento("Cartão")));
+        vendaPagamento.setValor(new BigDecimal(486.675));
+        vendaPagamentos.add(vendaPagamento);
+
+        return vendaPagamentos;
+    }
 
     private Produto getNewProduto(){
         Produto prod = new Produto();
@@ -85,12 +109,15 @@ public class VendaRestControllerTest extends TestBase {
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
 
-        this.vendas.add(this.vendaService.checkouVenda(getNewListVendaItem()));
+        this.vendas.add(this.vendaService.checkouVenda(getNewListVendaItem(), getNewVendaPagamento()));
     }
 
     @Test
     public void rest01VendaCheckout() throws Exception {
-        String jsonContent = json(getNewListVendaItem());
+        String jsonContent = "{\"listaItens\":\"?1\",\"pagamentos\":\"?2\"}";
+
+        jsonContent = jsonContent.replace("?1", json(getNewListVendaItem()));
+        jsonContent = jsonContent.replace("?2", json(getNewVendaPagamento()));
 
         this.mockMvc.perform(post(END_POINT_VENDA)
                 .content(this.json(0))
@@ -108,7 +135,7 @@ public class VendaRestControllerTest extends TestBase {
 
     @Test
     public void rest03GetVenda() throws Exception {
-        mockMvc.perform(get(END_POINT_VENDA.concat("/").concat(vendas.get(0).getId().toString()))
+        mockMvc.perform(get(END_POINT_VENDA.concat("/").concat(vendas.get(0).getIdVenda().toString()))
                 .contentType(contentType))
                 .andExpect(status().isOk());
     }

@@ -1,6 +1,8 @@
-package br.com.achimid.lanchonete.api.venda;
+package br.com.achimid.lanchonete.api.compra.venda;
 
 import br.com.achimid.lanchonete.api.base.EntidadeBase;
+import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
+import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -15,12 +17,12 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "venda")
-@EqualsAndHashCode(of = "id")
+@EqualsAndHashCode(of = "idVenda")
 public class Venda extends EntidadeBase{
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long idVenda;
 
     @NotNull(message = "Data nao pode ser nulla")
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -31,7 +33,12 @@ public class Venda extends EntidadeBase{
     @NumberFormat(pattern = "#,##0.00")
     private BigDecimal valorFinal;
 
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "id")
+    @NotNull(message = "A venda deve ter ao menos um item.")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idVendaItem")
     private List<VendaItem> listaItens;
+
+    @NotNull(message = "A venda deve ter ao menos um pagamento.")
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idVendaPagamento")
+    private List<VendaPagamento> pagamentos;
 
 }

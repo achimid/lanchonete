@@ -24,6 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppContextSetup;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class CategoriaRestControllerTest extends TestBase {
 
     private Categoria categoria;
@@ -91,7 +92,7 @@ public class CategoriaRestControllerTest extends TestBase {
 
     @Test
     public void rest04GetCategoria() throws Exception {
-        mockMvc.perform(get(END_POINT_CATEGORIA.concat("/").concat(categorias.get(0).getId().toString()))
+        mockMvc.perform(get(END_POINT_CATEGORIA.concat("/").concat(categorias.get(0).getIdCategoria().toString()))
                 .contentType(contentType))
                 .andExpect(jsonPath("$.nome", is("Nome da Categoria")))
                 .andExpect(status().isOk());
@@ -99,7 +100,7 @@ public class CategoriaRestControllerTest extends TestBase {
 
     @Test
     public void rest05DeleteCategoria() throws Exception {
-        this.mockMvc.perform(delete(END_POINT_CATEGORIA.concat("/").concat(categorias.get(0).getId().toString()))
+        this.mockMvc.perform(delete(END_POINT_CATEGORIA.concat("/").concat(categorias.get(0).getIdCategoria().toString()))
                 .contentType(contentType))
                 .andExpect(status().isNoContent());
     }

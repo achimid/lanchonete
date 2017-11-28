@@ -14,6 +14,7 @@ import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -26,6 +27,9 @@ import static org.junit.Assert.assertNotNull;
 @WebAppConfiguration
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestBase {
+
+    @Autowired
+    protected WebApplicationContext webApplicationContext;
 
     protected MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
