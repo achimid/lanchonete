@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS venda(
+  id_venda bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  data_venda TIMESTAMP DEFAULT now(),
+  valor_final decimal(19,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
