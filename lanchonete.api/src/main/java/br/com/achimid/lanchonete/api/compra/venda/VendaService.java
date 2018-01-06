@@ -3,6 +3,7 @@ package br.com.achimid.lanchonete.api.compra.venda;
 import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
 import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItemRepository;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
+import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,9 @@ public class VendaService {
     @Autowired
     private VendaRepository vendaRepository;
 
+    @Autowired
+    private VendaPagamentoRepository vendaPagamentoRepository;
+
     public List<Venda> findAll(){
         return (List<Venda>) vendaRepository.findAll();
     }
@@ -36,13 +40,17 @@ public class VendaService {
         venda.setListaItens(listaItens);
         venda.setPagamentos(pagamentos);
 
-        venda.getListaItens().forEach(item -> item.setVenda(venda));
         venda.getPagamentos().forEach(pagamento -> pagamento.setVenda(venda));
+        venda.getListaItens().forEach(item -> item.setVenda(venda));
 
         this.calculaValorFinal(venda);
         this.consolidaFormasPagamentos(venda);
 
-        return vendaRepository.save(venda);
+        vendaRepository.save(venda);
+        vendaPagamentoRepository.save(venda.getPagamentos());
+        vendaItemRepository.save(venda.getListaItens());
+
+        return venda;
     }
 
     private void calculaValorFinal(Venda venda){

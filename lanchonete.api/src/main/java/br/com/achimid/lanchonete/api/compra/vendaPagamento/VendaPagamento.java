@@ -28,7 +28,7 @@ public class VendaPagamento extends EntidadeBase{
     private FormaPagamento formaPagamento;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "venda_id_venda")
     @NotNull(message = "Venda não pode ser nullo no pagamento")
     private Venda venda;

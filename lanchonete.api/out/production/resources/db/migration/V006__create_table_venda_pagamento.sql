@@ -1,5 +1,5 @@
 CREATE TABLE venda_pagamento(
-  idvenda_pagamento bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  id_venda_pagamento bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   venda_id_venda bigint(20) NOT NULL,
   forma_pagamento_id_forma_pagamento bigint(20) NOT NULL,
   valor decimal(19,2) DEFAULT NULL,

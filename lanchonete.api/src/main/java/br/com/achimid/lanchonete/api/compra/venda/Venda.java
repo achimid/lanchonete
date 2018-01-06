@@ -11,6 +11,7 @@ import org.springframework.format.annotation.NumberFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,11 +35,11 @@ public class Venda extends EntidadeBase{
     private BigDecimal valorFinal;
 
     @NotNull(message = "A venda deve ter ao menos um item.")
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idVendaItem")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVendaItem")
     private List<VendaItem> listaItens;
 
     @NotNull(message = "A venda deve ter ao menos um pagamento.")
-    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "idVendaPagamento")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVendaPagamento")
     private List<VendaPagamento> pagamentos;
 
 }

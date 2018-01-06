@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Entity
 @Table(name="forma_pagamento")
-@EqualsAndHashCode(of = "id_forma_pagamento", callSuper=false)
+@EqualsAndHashCode(of = "idFormaPagamento", callSuper=false)
 public class FormaPagamento extends EntidadeBase{
 
     public FormaPagamento(String nome) {

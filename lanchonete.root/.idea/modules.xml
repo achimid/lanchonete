@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/lanchonete.root.iml" filepath="$PROJECT_DIR$/lanchonete.root.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/lanchonete.root_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lanchonete.root_main.iml" group="lanchonete.root" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lanchonete.root_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lanchonete.root_test.iml" group="lanchonete.root" />
     </modules>
   </component>
 </project>

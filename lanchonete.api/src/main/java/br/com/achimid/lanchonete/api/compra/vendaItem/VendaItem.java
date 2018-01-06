@@ -22,7 +22,7 @@ public class VendaItem extends EntidadeBase {
     private Long idVendaItem;
 
     @JsonIgnore
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "venda_id_venda")
     private Venda venda;
 
