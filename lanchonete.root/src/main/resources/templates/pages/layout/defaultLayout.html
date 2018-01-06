@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <block th:replace="pages/layout/headImport :: headImport"></block>
+</head>
+  <body class="skin-blue fixed">
+    <div class="wrapper" id="pagewrap">
+      <!-- HEADER LAYOUT -->
+      <block th:replace="pages/layout/headerLayout :: headerLayout"></block>
+
+      <!-- Left side column. contains the sidebar -->
+      <block th:replace="pages/layout/sideBarLayout :: sideBarLayout"></block>
+
+      <!-- Right side column. Contains the navbar and content of the page -->
+      <div class="content-wrapper" >
+
+        <!-- Body of page -->
+        <section layout:fragment="body"></section>
+
+      </div><!-- /.content-wrapper -->
+
+      <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0
+        </div>
+        <strong>Copyright &copy; Achimid </strong> All rights reserved.
+      </footer>
+    </div><!-- ./wrapper -->
+
+    <div id="loader" class="pageload-overlay" data-opening="M 40,100 150,0 -65,0 z">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
+        <path d="M 40,100 150,0 l 0,0 z"/>
+      </svg>
+    </div><!-- /pageload-overlay -->
+
+    <block th:replace="pages/layout/jsImport :: jsImport"></block>
+
+    <block th:replace="pages/layout/commonFuncions :: commonFuncions"></block>
+
+    <th:block layout:fragment="javascript-extra"></th:block>
+
+  </body>
+</html>
