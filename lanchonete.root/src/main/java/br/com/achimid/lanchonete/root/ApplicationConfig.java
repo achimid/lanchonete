@@ -5,8 +5,12 @@ import org.springframework.boot.web.servlet.ErrorPage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+
+import java.util.Locale;
 
 /**
  * Created by Lourran on 15/07/2017.
@@ -26,4 +30,5 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter {
                         new ErrorPage(HttpStatus.NOT_FOUND, "/404"),
                         new ErrorPage(HttpStatus.INTERNAL_SERVER_ERROR, "/500")));
     }
+
 }
