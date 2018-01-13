@@ -4,20 +4,20 @@
       xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="pages/layout/defaultLayout">
   <head>
-    <title>Categories</title>
+    <title>Categorias</title>
   </head>
   <body >
       <section layout:fragment="body">
         <section class="content-header">
           <h1>
-            Products
-            <small>list of categories</small>
+            Categorias
+            <small>lista de categorias</small>
           </h1>
           <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Forms</a></li>
-            <li class="active">Categories</li>
+            <li><a href="#"><i class="fa fa-dashboard"></i> Cadastros</a></li>
+            <li class="active">Categorias</li>
           </ol>
-          <a class="btn btn-primary" th:href="@{/categories/new}"> New Category </a>
+          <a class="btn btn-primary" th:href="@{/categoria/new}"> Nova Categoria </a>
         </section>
 
         <section class="content">
@@ -25,7 +25,7 @@
           <div class="col-xs-12">
             <div class="box">
               <div class="box-header">
-                <h3 class="box-title">Table of categories</h3>
+                <h3 class="box-title"></h3>
                 <div class="box-tools">
                   <div class="input-group">
                     <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
@@ -39,16 +39,16 @@
                 <table class="table table-hover">
                   <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th class="col-action-table">Action</th>
+                    <th>Nome</th>
+                    <th>Descricao</th>
+                    <th class="col-action-table">Ações</th>
                   </tr>
-                  <tr th:each="cat : ${categories}">
-                    <td th:text="${cat.id}">183</td>
-                    <td th:text="${cat.name}">Pizza</td>
-                    <td th:text="${cat.description}">Made o cheese</td>
+                  <tr th:each="cat : ${categorias}">
+                    <td th:text="${cat.idCategoria}">183</td>
+                    <td th:text="${cat.nome}">Pizza</td>
+                    <td th:text="${cat.descricao}">Made o cheese</td>
                     <td class="col-action-table">
-                      <a class="btn btn-success" th:href="@{categories/{id}(id=${cat.id})}" title="Edit Category">
+                      <a class="btn btn-success" th:href="@{categoria/{id}(id=${cat.idCategoria})}" title="Editar">
                         <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                       </a>
                       <a class="btn btn-danger js-delete" href="#" data-toggle="modal" data-target="#excludeModal" title="Delete product">

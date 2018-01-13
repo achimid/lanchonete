@@ -6,7 +6,7 @@
   <block th:replace="pages/layout/headImport :: headImport"></block>
 </head>
   <body class="skin-blue fixed">
-    <div class="wrapper" id="wrapper" style="display: none;">
+    <div class="wrapper" id="pagewrap">
       <!-- HEADER LAYOUT -->
       <block th:replace="pages/layout/headerLayout :: headerLayout"></block>
 
@@ -29,36 +29,17 @@
       </footer>
     </div><!-- ./wrapper -->
 
-    <div id="loading"></div>
+    <div id="loader" class="pageload-overlay" data-opening="M 40,100 150,0 -65,0 z">
+      <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 80 60" preserveAspectRatio="none">
+        <path d="M 40,100 150,0 l 0,0 z"/>
+      </svg>
+    </div><!-- /pageload-overlay -->
 
     <block th:replace="pages/layout/jsImport :: jsImport"></block>
 
     <block th:replace="pages/layout/commonFuncions :: commonFuncions"></block>
 
     <th:block layout:fragment="javascript-extra"></th:block>
-
-  <script>
-
-function onReady(callback) {
-    var intervalID = window.setInterval(checkReady, 500);
-
-    function checkReady() {
-        if (document.getElementsByTagName('body')[0] !== undefined) {
-            window.clearInterval(intervalID);
-            callback.call(this);
-        }
-    }
-}
-
-function show(id, value) {
-    document.getElementById(id).style.display = value ? 'block' : 'none';
-}
-
-onReady(function () {
-    show('wrapper', true);
-    show('loading', false);
-});
-  </script>
 
   </body>
 </html>

@@ -34,20 +34,14 @@ public class CategoriaController extends BaseController{
 
     @GetMapping("/delete/{id}")
     public ModelAndView delete(@PathVariable Long id){
-        try {
-            if(super.delete(URL_PATH, id)){
-                return new ModelAndView(REDIRECT)
-                        .addObject("mensagem", getMessage("default.item.remove"));
-            }else{
-                return new ModelAndView(REDIRECT.concat("/").concat(id.toString()))
-                        .addObject("mensagem", getMessage("default.item.remove.error"));
-            }
-        }catch (Exception e){
-            return new ModelAndView(REDIRECT.concat("/").concat(id.toString()))
-                    .addObject("mensagem", e.getMessage());
+        String msgErro = null;
+        if(super.delete(URL_PATH, id, msgErro)){
+            return new ModelAndView(REDIRECT)
+                    .addObject("mensagem", getMessage("default.item.remove"));
+        }else{
+            return new ModelAndView(NEW.concat("/").concat(id.toString()))
+                    .addObject("mensagem", getMessage("default.item.remove.error"));
         }
-
-
     }
 
     @GetMapping("/{id}")

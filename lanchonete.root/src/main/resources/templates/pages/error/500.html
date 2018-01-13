@@ -38,6 +38,41 @@
         </div>
         <!-- /.error-page -->
 
+        <!-- Errors -->
+        <div>
+            <div class="error-content">
+                <span id="show" class="btn btn-info margin-top-lg">
+                    Exibir detalhes do erro
+                </span>
+
+                <div id="info" style="display:none">
+                    <div>
+                        <label>Mensagem</label>
+                        <p th:text="${erroMsg}"></p>
+                    </div>
+                    <div>
+                        <label>Erro</label>
+                        <p th:text="${erroStack}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      <section layout:fragment="javascript-extra">
+          <script>
+              $(document).ready(function() {
+                $('#show').click(function() {
+                    $('#info').toggle();
+                    var visible = $('#info').is(":visible");
+                    if(visible){
+                        $(this).html('Esconder detalhes');
+                    }else{
+                        $(this).html('Exibir detalhes do erro');
+                    }
+                });
+              });
+          </script>
       </section>
       <!-- /.content -->
 

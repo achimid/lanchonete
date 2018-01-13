@@ -3,12 +3,16 @@
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
+  <link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
   <block th:replace="pages/layout/headImport :: headImport"></block>
 </head>
   <body class="skin-blue fixed">
     <div class="wrapper" id="pagewrap">
-      <!-- HEADER LAYOUT -->
+      <!-- HEADER LAYOUT  CSS-->
       <block th:replace="pages/layout/headerLayout :: headerLayout"></block>
+
+      <!-- HEADER LAYOUT  JS-->
+      <block th:replace="pages/layout/jsImport :: jsImport"></block>
 
       <!-- Left side column. contains the sidebar -->
       <block th:replace="pages/layout/sideBarLayout :: sideBarLayout"></block>
@@ -35,7 +39,7 @@
       </svg>
     </div><!-- /pageload-overlay -->
 
-    <block th:replace="pages/layout/jsImport :: jsImport"></block>
+
 
     <block th:replace="pages/layout/commonFuncions :: commonFuncions"></block>
 
