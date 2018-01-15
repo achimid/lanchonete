@@ -2,12 +2,13 @@ package br.com.achimid.lanchonete.root.controller;
 
 import br.com.achimid.lanchonete.root.base.BaseController;
 import br.com.achimid.lanchonete.root.dto.CategoriaDTO;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -28,19 +29,21 @@ public class CategoriaController extends BaseController{
     }
 
     @GetMapping
-    public ModelAndView index(){
-        return new ModelAndView(INDEX).addObject("categorias", super.findAll(URL_PATH));
+    public ModelAndView index(
+            @RequestParam(required = false) String filtro){
+        return new ModelAndView(INDEX)
+                .addObject("categorias", search(filtro));
     }
 
+    @DeleteMapping("{id}")
     @GetMapping("/delete/{id}")
-    public ModelAndView delete(@PathVariable Long id){
-        String msgErro = null;
-        if(super.delete(URL_PATH, id, msgErro)){
-            return new ModelAndView(REDIRECT)
-                    .addObject("mensagem", getMessage("default.item.remove"));
+    public ModelAndView delete(@PathVariable Long id, RedirectAttributes redirectAttributes){
+        if(super.delete(URL_PATH, id)){
+            redirectAttributes.addFlashAttribute("msgSuccess", getMessage("default.item.remove"));
+            return new ModelAndView(REDIRECT);
         }else{
-            return new ModelAndView(NEW.concat("/").concat(id.toString()))
-                    .addObject("mensagem", getMessage("default.item.remove.error"));
+            return get(id)
+                    .addObject("msgErros", getMessage("default.item.remove.error"));
         }
     }
 
@@ -55,13 +58,29 @@ public class CategoriaController extends BaseController{
     }
 
     @PostMapping("/new")
-    public ModelAndView save(CategoriaDTO categoria){
+    public ModelAndView save(CategoriaDTO categoria, RedirectAttributes redirectAttributes){
         if(super.save(URL_PATH, categoria)){
+            redirectAttributes.addFlashAttribute("msgSuccess", getMessage("deafult.item.created"));
             return new ModelAndView(REDIRECT);
         }else{
             return get(categoria);
         }
 
+    }
+
+    private List<CategoriaDTO> search(String filtro){
+        RestTemplate restTemplate = new RestTemplate();
+
+        UriComponentsBuilder builder = UriComponentsBuilder.
+                fromHttpUrl(super.URL_API.concat(URL_PATH))
+                .queryParam("nome", filtro);
+
+        String s = builder.build().encode().toString();
+
+        ResponseEntity<List> response = restTemplate
+                .getForEntity(builder.build().encode().toString(), List.class);
+
+        return response.getBody();
     }
 
 

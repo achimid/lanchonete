@@ -19,12 +19,10 @@ import java.util.stream.Collectors;
 public class BaseController<T extends BaseDTO>{
 
     @Value("${api.base-url}")
-    private String URL_API;
+    protected String URL_API;
 
     @Autowired
     Messages messages;
-
-    private String msgErro;
 
     protected String getMessage(String code) {
         return messages.get(code);
@@ -43,14 +41,11 @@ public class BaseController<T extends BaseDTO>{
         return response.getBody();
     }
 
-    public boolean delete(String urlPath, Long id, String msgErro){
+    public boolean delete(String urlPath, Long id){
         RestTemplate restTemplate = new RestTemplate();
         try {
-            String urlEndPoint = URL_API.concat(urlPath).concat("/").concat(id.toString());
-            System.out.println(urlEndPoint);
-            restTemplate.delete(urlEndPoint, Object.class);
+            restTemplate.delete(URL_API.concat(urlPath).concat("/").concat(id.toString()), Map.class);
         }catch(Exception e){
-            msgErro = "teste";
             return false;
         }
         return true;
@@ -91,20 +86,5 @@ public class BaseController<T extends BaseDTO>{
                     .map(i -> (String) i.get("defaultMessage"))
                     .collect(Collectors.toList()));
         }
-    }
-
-    private String exceptionToString(Exception e){
-        StringWriter errors = new StringWriter();
-        e.printStackTrace(new PrintWriter(errors));
-        return errors.toString();
-    }
-
-    @ModelAttribute("getMsgErro")
-    public String getMsgErro() {
-        return msgErro;
-    }
-
-    public void setMsgErro(String msgErro) {
-        this.msgErro = msgErro;
     }
 }

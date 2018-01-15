@@ -20,13 +20,14 @@
 
         <section class="content">
           <div class="container-fluid">
+            <!-- Mensages -->
+            <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
 
-            <!-- Errors
-            <div th:if="${product.errors}">
+            <div th:if="${categoria.errors}" class="alert alert-danger" role="alert">
               <ul>
-                <li th:each="error : ${product.errors}" th:text="${error}"></li>
+                <li th:each="error : ${product.categoria}" th:text="${error}"></li>
               </ul>
-            </div>-->
+            </div>
 
             <!-- Form -->
             <form th:action="@{/categoria/new}" method="POST" th:object="${categoria}">

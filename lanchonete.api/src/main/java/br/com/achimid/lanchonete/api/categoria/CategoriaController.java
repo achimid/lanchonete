@@ -16,9 +16,11 @@ public class CategoriaController implements CategoriaControllerDoc {
     @Autowired
     private CategoriaService categoriaService;
 
-    @GetMapping()
-    public List<Categoria> index(){
-        return (List<Categoria>) categoriaService.findAll();
+    @GetMapping
+    public List<Categoria> index(
+            @RequestParam(required = false) String nome,
+            @RequestParam(required = false) String descricao){
+        return (List<Categoria>) categoriaService.find(nome, descricao);
     }
 
     @GetMapping("/{id}")
