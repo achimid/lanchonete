@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2018-01-06T15:09:58" hostname="lourran-PC" time="0.6">
+  <properties/>
+  <testcase name="rest01GetAllProdutos" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.25"/>
+  <testcase name="rest02PostProduto" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.083"/>
+  <testcase name="rest03PutProduto" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.073"/>
+  <testcase name="rest04GetProduto" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.045"/>
+  <testcase name="rest05DeleteProduto" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.053"/>
+  <testcase name="rest06DeleteProdutoNotFound" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.052"/>
+  <testcase name="none" classname="br.com.achimid.lanchonete.api.ProdutoRestControllerTest" time="0.031"/>
+  <system-out><![CDATA[2018-01-06 13:09:58.499  INFO 11082 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.ProdutoRestControllerTest], using SpringBootContextLoader
+2018-01-06 13:09:58.499  INFO 11082 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.ProdutoRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-01-06 13:09:58.506  INFO 11082 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-01-06 13:09:58.510  INFO 11082 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@556a1c89, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7ab8a9b7, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@4a8a75b4, org.springframework.test.context.support.DirtiesContextTestExecutionListener@40386e9, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1884cb4, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3ec2b823, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@27fc4d9a, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3f50b342, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@7c7ea5f0, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@575609fc, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@12030e11, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@28f375b0]
+2018-01-06 13:09:58.517  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:58.517  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:58.521  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_2_, produto0_.categoria_id_categoria as categori6_2_, produto0_.descricao as descrica2_2_, produto0_.nome as nome3_2_, produto0_.valor_custo as valor_cu4_2_, produto0_.valor_venda as valor_ve5_2_ from produto produto0_
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+2018-01-06 13:09:58.769  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:58.769  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:58.773  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+2018-01-06 13:09:58.856  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:58.856  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:58.860  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_2_0_, produto0_.categoria_id_categoria as categori6_2_0_, produto0_.descricao as descrica2_2_0_, produto0_.nome as nome3_2_0_, produto0_.valor_custo as valor_cu4_2_0_, produto0_.valor_venda as valor_ve5_2_0_ from produto produto0_ where produto0_.id_produto=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: update produto set categoria_id_categoria=?, descricao=?, nome=?, valor_custo=?, valor_venda=? where id_produto=?
+2018-01-06 13:09:58.930  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:58.931  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:58.934  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_2_0_, produto0_.categoria_id_categoria as categori6_2_0_, produto0_.descricao as descrica2_2_0_, produto0_.nome as nome3_2_0_, produto0_.valor_custo as valor_cu4_2_0_, produto0_.valor_venda as valor_ve5_2_0_, categoria1_.id_categoria as id_categ1_0_1_, categoria1_.descricao as descrica2_0_1_, categoria1_.nome as nome3_0_1_ from produto produto0_ inner join categoria categoria1_ on produto0_.categoria_id_categoria=categoria1_.id_categoria where produto0_.id_produto=?
+2018-01-06 13:09:58.976  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:58.977  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:58.980  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_2_0_, produto0_.categoria_id_categoria as categori6_2_0_, produto0_.descricao as descrica2_2_0_, produto0_.nome as nome3_2_0_, produto0_.valor_custo as valor_cu4_2_0_, produto0_.valor_venda as valor_ve5_2_0_, categoria1_.id_categoria as id_categ1_0_1_, categoria1_.descricao as descrica2_0_1_, categoria1_.nome as nome3_0_1_ from produto produto0_ inner join categoria categoria1_ on produto0_.categoria_id_categoria=categoria1_.id_categoria where produto0_.id_produto=?
+Hibernate: select count(*) as col_0_0_ from produto produto0_ where produto0_.id_produto=?
+Hibernate: delete from produto where id_produto=?
+2018-01-06 13:09:59.032  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:59.032  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:59.036  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_2_0_, produto0_.categoria_id_categoria as categori6_2_0_, produto0_.descricao as descrica2_2_0_, produto0_.nome as nome3_2_0_, produto0_.valor_custo as valor_cu4_2_0_, produto0_.valor_venda as valor_ve5_2_0_, categoria1_.id_categoria as id_categ1_0_1_, categoria1_.descricao as descrica2_0_1_, categoria1_.nome as nome3_0_1_ from produto produto0_ inner join categoria categoria1_ on produto0_.categoria_id_categoria=categoria1_.id_categoria where produto0_.id_produto=?
+2018-01-06 13:09:59.087  INFO 11082 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-06 13:09:59.087  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-06 13:09:59.090  INFO 11082 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome) values (?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, valor_custo, valor_venda) values (?, ?, ?, ?, ?)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -2,10 +2,9 @@
 <html lang="en" xmlns="https://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-  <link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}" />
-  <block th:replace="pages/layout/headImport :: headImport"></block>
-</head>
+
+  <head th:replace="pages/layout/headImport :: headImport"></head>
+
   <body class="skin-blue fixed">
     <div class="wrapper" id="pagewrap">
       <!-- HEADER LAYOUT  CSS-->

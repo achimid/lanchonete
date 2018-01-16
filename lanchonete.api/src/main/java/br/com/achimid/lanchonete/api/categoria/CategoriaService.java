@@ -20,16 +20,18 @@ public class CategoriaService {
         if(nome == null && descricao == null){
             return findAll();
         }else{
-            Categoria ex = new Categoria();
-            ex.setNome(nome);
-            ex.setDescricao(descricao);
+            //Categoria ex = new Categoria();
+            //ex.setNome(nome);
+            //ex.setDescricao(descricao);
 
-            ExampleMatcher matcher = ExampleMatcher
-                    .matching()
-                    .withMatcher("nome", matcher1 -> matcher1.contains())
-                    .withMatcher("descricao", matcher1 -> matcher1.contains());
+            //ExampleMatcher matcher = ExampleMatcher
+            //        .matching()
+            //        .withMatcher("nome", matcher1 -> matcher1.contains())
+            //        .withMatcher("descricao", matcher1 -> matcher1.contains());
 
-            return (List<Categoria>) categoriaRepository.findAll(Example.of(ex, matcher));
+            //return (List<Categoria>) categoriaRepository.findAll(Example.of(ex, matcher));
+
+            return categoriaRepository.findByNomeContainingOrDescricaoContains(nome, descricao);
         }
 
     }

@@ -12,10 +12,8 @@ import java.util.List;
 
 public interface CategoriaControllerDoc {
 
-    @ApiOperation(value = "Retorna todos as categorias, sendo possivel filtrar por nome ou descricao")
-    public List<Categoria> index(
-            @RequestParam("nome") String nome,
-            @RequestParam("descricao") String descricao);
+    @ApiOperation(value = "Retorna todos as categorias")
+    public List<Categoria> index();
 
     @ApiOperation(value = "Retorna uma categoria especifica informando o id da categoria")
     public HttpEntity<Categoria> get(@PathVariable Long id);

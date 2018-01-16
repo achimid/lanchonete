@@ -476,33 +476,28 @@ $.AdminLTE.boxWidget = {
   };
 }(jQuery));
 
-
-
-(function() {
-    var pageWrap = document.getElementById( 'pagewrap' ),
-        pages = [].slice.call( pageWrap.querySelectorAll( 'div.container' ) ),
-        currentPage = 0,
-        triggerLoading = [].slice.call( pageWrap.querySelectorAll( 'a.pageload-link' ) ),
-        loader = new SVGLoader( document.getElementById( 'loader' ), { speedIn : 400, easingIn : mina.easeinout } );
-
-    function init() {
-        triggerLoading.forEach( function( trigger ) {
-            trigger.addEventListener( 'click', function( ev ) {
-                ev.preventDefault();
-                loader.show();
-                // after some time hide loader
-                setTimeout( function() {
-                    loader.hide();
-
-                    classie.removeClass( pages[ currentPage ], 'show' );
-                    // update..
-                    currentPage = currentPage ? 0 : 1;
-                    classie.addClass( pages[ currentPage ], 'show' );
-
-                }, 2000 );
-            } );
-        } );
-    }
-
-    init();
-})();
+// configurando o dataTable
+ $(document).ready(function(){
+    $('.dataTable').dataTable({
+      "bPaginate": true,
+      "bLengthChange": false,
+      "bFilter": true,
+      "bSort": true,
+      "bInfo": false,
+      "bAutoWidth": true,
+      "oLanguage": {
+        "sSearch": '_INPUT_',
+        "oPaginate": {
+          "sFirst": "Primeira página", // This is the link to the first page
+          "sPrevious": "Página anterior", // This is the link to the previous page
+          "sNext": "Próxima página", // This is the link to the next page
+          "sLast": "Última página" // This is the link to the last page
+        }
+      }
+    });
+    $('.dataTables_filter').addClass('input-group');
+    $('.dataTables_filter').find('input').addClass('form-control input-sm pull-right');
+    $('.dataTables_filter').find('input').after('<div class="input-group-btn"><button class="btn btn-sm btn-default" name="filtrar"><i class="fa fa-search"></i></button></div>')
+    $('.dataTables_filter').wrap('<div class="box-tools pull-right"></div>');
+    $('.dataTables_filter').find('input').attr('placeholder','Filtrar');
+  })

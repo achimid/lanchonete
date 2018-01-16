@@ -28,42 +28,33 @@
             <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
 
             <div class="box">
-              <div class="box-header">
-                <h3 class="box-title"></h3>
-                <div class="box-tools">
-                  <div class="input-group">
-                    <form method="GET">
-                      <input type="text" name="filtro" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                      <div class="input-group-btn">
-                        <button class="btn btn-sm btn-default" name="filtrar"><i class="fa fa-search"></i></button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div><!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descricao</th>
-                    <th class="col-action-table">Ações</th>
-                  </tr>
-                  <tr th:each="cat : ${categorias}">
-                    <td th:text="${cat.idCategoria}">183</td>
-                    <td th:text="${cat.nome}">Pizza</td>
-                    <td th:text="${cat.descricao}">Made o cheese</td>
-                    <td class="col-action-table">
-                      <a class="btn btn-success" th:href="@{categoria/{id}(id=${cat.idCategoria})}" title="Editar">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                      </a>
-                      <a class="btn btn-danger" data-toggle="modal" data-target="#excludeModal"
-                         th:attr="data-codigo=${cat.idCategoria}, data-descricao=${cat.descricao}"
-                         title="Excluir" rel="tooltip" data-placement="top">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                      </a>
-                    </td>
-                  </tr>
+              <div class="box-body table-responsive">
+                <table class="table table-hover dataTable">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Descricao</th>
+                      <th class="col-action-table">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="cat : ${categorias}">
+                      <td th:text="${cat.idCategoria}">183</td>
+                      <td th:text="${cat.nome}">Pizza</td>
+                      <td th:text="${cat.descricao}">Made o cheese</td>
+                      <td class="col-action-table">
+                        <a class="btn btn-success" th:href="@{categoria/{id}(id=${cat.idCategoria})}" title="Editar">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#excludeModal"
+                           th:attr="data-codigo=${cat.idCategoria}, data-descricao=${cat.descricao}"
+                           title="Excluir" rel="tooltip" data-placement="top">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div><!-- /.box-body -->
             </div><!-- /.box -->
@@ -116,6 +107,7 @@
 
             modal.find('.modal-body p').html('Tem certeza que deseja excluir o item <strong>' + descricaoTitulo + '</strong>?');
           });
+
         </script>
       </section>
   </body>

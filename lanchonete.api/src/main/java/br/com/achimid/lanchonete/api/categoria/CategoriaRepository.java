@@ -10,4 +10,6 @@ import java.util.List;
 public interface CategoriaRepository extends
         CrudRepository<Categoria, Long>, QueryByExampleExecutor<Categoria> {
 
+        List<Categoria> findByNomeContainingOrDescricaoContains(String nome, String descricao);
+
 }

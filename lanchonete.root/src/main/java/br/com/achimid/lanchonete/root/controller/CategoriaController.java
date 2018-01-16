@@ -29,10 +29,8 @@ public class CategoriaController extends BaseController{
     }
 
     @GetMapping
-    public ModelAndView index(
-            @RequestParam(required = false) String filtro){
-        return new ModelAndView(INDEX)
-                .addObject("categorias", search(filtro));
+    public ModelAndView index(){
+        return new ModelAndView(INDEX).addObject("categorias", super.findAll(URL_PATH));
     }
 
     @DeleteMapping("{id}")
@@ -67,21 +65,4 @@ public class CategoriaController extends BaseController{
         }
 
     }
-
-    private List<CategoriaDTO> search(String filtro){
-        RestTemplate restTemplate = new RestTemplate();
-
-        UriComponentsBuilder builder = UriComponentsBuilder.
-                fromHttpUrl(super.URL_API.concat(URL_PATH))
-                .queryParam("nome", filtro);
-
-        String s = builder.build().encode().toString();
-
-        ResponseEntity<List> response = restTemplate
-                .getForEntity(builder.build().encode().toString(), List.class);
-
-        return response.getBody();
-    }
-
-
 }
