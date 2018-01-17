@@ -25,7 +25,7 @@
 
             <div th:if="${categoria.errors}" class="alert alert-danger" role="alert">
               <ul>
-                <li th:each="error : ${product.categoria}" th:text="${error}"></li>
+                <li th:each="error : ${categoria.errors}" th:text="${error}"></li>
               </ul>
             </div>
 
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group col-md-5">
                         <label class="label-control"> Nome:</label>
-                        <input class="form-control" type="text" th:field="*{nome}" required="true"/>
+                        <input class="form-control" type="text" th:field="*{nome}" required="true" />
                     </div>
 
                     <div class="form-group col-md-7">
@@ -51,8 +51,8 @@
                         <div class="text-right">
                             <a th:href="@{/categoria}" class="btn btn-default pull-left">Voltar</a>
                             <a th:if="not ${#strings.isEmpty(categoria.idCategoria)}"
-                               th:href="@{/categoria/delete/{id}(id=${categoria.idCategoria})}" class="btn btn-danger js-delete">Delete</a>
-                            <button type="submit" class="btn btn-primary">Save</button>
+                               th:href="@{/categoria/delete/{id}(id=${categoria.idCategoria})}" class="btn btn-danger js-delete">Excluir</a>
+                            <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
                     </div>
 

@@ -4,20 +4,20 @@
       xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="pages/layout/defaultLayout">
   <head>
-    <title>Categorias</title>
+    <title>Produtos</title>
   </head>
   <body >
       <section layout:fragment="body">
         <section class="content-header">
           <h1>
-            Categorias
-            <small>lista de categorias</small>
+            Produtos
+            <small>lista de produtos</small>
           </h1>
           <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Cadastros</a></li>
-            <li class="active">Categorias</li>
+            <li class="active">Produtos</li>
           </ol>
-          <a class="btn btn-primary pull-right margin-top-sm margin-bottom-sm ank" th:href="@{/categoria/new}"> Nova Categoria </a>
+          <a class="btn btn-primary pull-right margin-top-sm margin-bottom-sm ank" th:href="@{/produto/new}"> Novo Produto </a>
         </section>
 
         <section class="content">
@@ -39,16 +39,16 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr th:each="cat : ${categorias}">
-                      <td th:text="${cat.idCategoria}">183</td>
-                      <td th:text="${cat.nome}">Pizza</td>
-                      <td th:text="${cat.descricao}">Made o cheese</td>
+                    <tr th:each="p : ${produtos}">
+                      <td th:text="${p.idProduto}">183</td>
+                      <td th:text="${p.nome}">Pizza</td>
+                      <td th:text="${p.descricao}">Made o cheese</td>
                       <td class="col-action-table">
-                        <a class="btn btn-success" th:href="@{categoria/{id}(id=${cat.idCategoria})}" title="Editar">
+                        <a class="btn btn-success" th:href="@{produto/{id}(id=${p.idProduto})}" title="Editar">
                           <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                         <a class="btn btn-danger" data-toggle="modal" data-target="#excludeModal"
-                           th:attr="data-codigo=${cat.idCategoria}, data-descricao=${cat.descricao}"
+                           th:attr="data-codigo=${p.idProduto}, data-descricao=${p.nome}"
                            title="Excluir" rel="tooltip" data-placement="top">
                           <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
@@ -65,7 +65,7 @@
 
         <div id="excludeModal" class="modal modal-primary fade"  role="dialog">
           <div class="modal-dialog">
-            <form th:attr="data-url-base='/categoria'" method="POST">
+            <form th:attr="data-url-base='/produto'" method="POST">
               <input type="hidden" name="_method" value="DELETE"/>
                 <div class="modal-content">
                   <div class="modal-header">

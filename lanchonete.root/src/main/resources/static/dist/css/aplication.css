@@ -26,3 +26,11 @@
     word-wrap: normal !important;
     white-space: pre !important;
 }​
+
+.border-imp {
+    border-style: solid;
+    border-radius: 35px;
+    border-width: 1px;
+    border-color: #e0e5f6;
+    margin: 2px;
+}

@@ -20,7 +20,7 @@
       <div class="content-wrapper" >
 
         <!-- Body of page -->
-        <section layout:fragment="body"></section>
+        <section id="bodyPage" layout:fragment="body"></section>
 
       </div><!-- /.content-wrapper -->
 
@@ -37,10 +37,6 @@
         <path d="M 40,100 150,0 l 0,0 z"/>
       </svg>
     </div><!-- /pageload-overlay -->
-
-
-
-    <block th:replace="pages/layout/commonFuncions :: commonFuncions"></block>
 
     <th:block layout:fragment="javascript-extra"></th:block>
 

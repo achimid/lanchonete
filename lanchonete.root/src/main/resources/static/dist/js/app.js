@@ -484,9 +484,10 @@ $.AdminLTE.boxWidget = {
       "bFilter": true,
       "bSort": true,
       "bInfo": false,
-      "bAutoWidth": true,
+      "bAutoWidth": false,
       "oLanguage": {
         "sSearch": '_INPUT_',
+        "sEmptyTable": "Nenhuma informação encontrada!",
         "oPaginate": {
           "sFirst": "Primeira página", // This is the link to the first page
           "sPrevious": "Página anterior", // This is the link to the previous page
@@ -501,3 +502,29 @@ $.AdminLTE.boxWidget = {
     $('.dataTables_filter').wrap('<div class="box-tools pull-right"></div>');
     $('.dataTables_filter').find('input').attr('placeholder','Filtrar');
   })
+
+// Ajax reload only body
+/*
+function ajaxLink(){
+     $('.ank').click(function(event){
+       event.preventDefault();
+       var href = $(this).attr('href');
+       changeUrl(href, href);
+       $.get(href, function( data ) {
+           $('#bodyPage').html( $($.parseHTML(data)).find('#bodyPage') );
+           $(document).ready();
+           ajaxLink();
+       });
+     });
+}
+$(document).ready(ajaxLink);
+
+function changeUrl(page, url) {
+    if (typeof (history.pushState) != "undefined") {
+        var obj = { Page: page, Url: url };
+        history.pushState(obj, obj.Page, obj.Url);
+    } else {
+        alert("Browser does not support HTML5.");
+    }
+}
+*/

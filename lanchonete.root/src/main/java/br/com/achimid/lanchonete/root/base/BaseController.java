@@ -77,14 +77,8 @@ public class BaseController<T extends BaseDTO>{
         Gson gson = new Gson();
         Map map = gson.fromJson(e.getResponseBodyAsString(), Map.class);
         List<Map> errors = (List<Map>) map.get("errors");
-        if(obj == null){
-            throw new RuntimeException(errors.stream()
-                    .map(i -> (String) i.get("defaultMessage"))
-                    .collect(Collectors.toList()).toString());
-        }else {
-            obj.setErrors(errors.stream()
-                    .map(i -> (String) i.get("defaultMessage"))
-                    .collect(Collectors.toList()));
-        }
+        obj.setErrors(errors.stream()
+                .map(i -> (String) i.get("defaultMessage"))
+                .collect(Collectors.toList()));
     }
 }

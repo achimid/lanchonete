@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -30,7 +31,7 @@ public class CategoriaController implements CategoriaControllerDoc {
     }
 
     @PostMapping
-    public HttpEntity<Categoria> create(@RequestBody Categoria categoria){
+    public HttpEntity<Categoria> create(@Valid @RequestBody Categoria categoria){
         categoriaService.save(categoria);
         return ResponseEntity.ok(categoria);
     }
