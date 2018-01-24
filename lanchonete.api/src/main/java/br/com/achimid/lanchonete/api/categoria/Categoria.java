@@ -26,4 +26,6 @@ public class Categoria extends EntidadeBase{
 
     private String descricao;
 
+    private String urlImg;
+
 }

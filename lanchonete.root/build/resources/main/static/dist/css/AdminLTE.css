@@ -1632,7 +1632,7 @@ a:focus {
   text-align: center;
   font-size: 45px;
   line-height: 90px;
-  background: rgba(0, 0, 0, 0.2);
+  /*background: rgba(0, 0, 0, 0.2);*/
 }
 .info-box-content {
   padding: 5px 10px;

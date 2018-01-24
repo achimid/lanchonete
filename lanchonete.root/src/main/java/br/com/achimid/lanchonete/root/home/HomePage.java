@@ -10,10 +10,12 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class HomePage {
     private static final String INDEX_PAGE = "pages/home/dashboard";
+    private static final String VENDA_PAGE = "redirect:/venda";
 
     @GetMapping("/home")
     public ModelAndView index(){
-        return new ModelAndView(INDEX_PAGE);
+        return new ModelAndView(VENDA_PAGE);
+        //return new ModelAndView(INDEX_PAGE);
     }
 
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="https://www.thymeleaf.org">
+
+  <block th:fragment="formMensageImport">
+    <div th:if="${msgErros}" class="alert alert-danger" role="alert">
+      <ul>
+        <li th:each="erro : ${msgErros}" th:text="${erro}"></li>
+      </ul>
+    </div>
+    <div th:if="${msgInfos}" class="alert alert-info" role="alert">
+      <ul>
+        <li th:each="info : ${msgInfos}" th:text="${info}"></li>
+      </ul>
+    </div>
+    <div th:if="${msgSuccess}" class="alert alert-success" role="alert">
+      <ul>
+        <li th:each="success : ${msgSuccess}" th:text="${success}"></li>
+      </ul>
+    </div>
+  </block>
+
+</html>

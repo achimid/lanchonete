@@ -1,0 +1,24 @@
+.info-box-icon{
+    line-height: 0px ;
+}
+.img-thumbnail{
+    height: 100%;
+}
+
+.btn-click:hover,
+.btn-click > span:hover{
+    background-color: #3c8dbc33;
+}
+
+.btn-click:active {
+  background-color: #3c8dbc33;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.wrap-2{
+    line-height: 1.5em;
+    height: 3em;
+    overflow: hidden;
+    white-space: normal !important;
+}

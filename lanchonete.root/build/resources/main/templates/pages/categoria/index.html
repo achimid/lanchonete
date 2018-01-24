@@ -17,45 +17,44 @@
             <li><a href="#"><i class="fa fa-dashboard"></i> Cadastros</a></li>
             <li class="active">Categorias</li>
           </ol>
-          <a class="btn btn-primary" th:href="@{/categoria/new}"> Nova Categoria </a>
+          <a class="btn btn-primary pull-right margin-top-sm margin-bottom-sm ank" th:href="@{/categoria/new}"> Nova Categoria </a>
         </section>
 
         <section class="content">
           <div class="row">
           <div class="col-xs-12">
+
+            <!-- Mensages -->
+            <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
+
             <div class="box">
-              <div class="box-header">
-                <h3 class="box-title"></h3>
-                <div class="box-tools">
-                  <div class="input-group">
-                    <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
-                    <div class="input-group-btn">
-                      <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div><!-- /.box-header -->
-              <div class="box-body table-responsive no-padding">
-                <table class="table table-hover">
-                  <tr>
-                    <th>ID</th>
-                    <th>Nome</th>
-                    <th>Descricao</th>
-                    <th class="col-action-table">Ações</th>
-                  </tr>
-                  <tr th:each="cat : ${categorias}">
-                    <td th:text="${cat.idCategoria}">183</td>
-                    <td th:text="${cat.nome}">Pizza</td>
-                    <td th:text="${cat.descricao}">Made o cheese</td>
-                    <td class="col-action-table">
-                      <a class="btn btn-success" th:href="@{categoria/{id}(id=${cat.idCategoria})}" title="Editar">
-                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                      </a>
-                      <a class="btn btn-danger js-delete" href="#" data-toggle="modal" data-target="#excludeModal" title="Delete product">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i>
-                      </a>
-                    </td>
-                  </tr>
+              <div class="box-body table-responsive">
+                <table class="table table-hover dataTable">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Nome</th>
+                      <th>Descricao</th>
+                      <th class="col-action-table">Ações</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="cat : ${categorias}">
+                      <td th:text="${cat.idCategoria}">183</td>
+                      <td th:text="${cat.nome}">Pizza</td>
+                      <td th:text="${cat.descricao}">Made o cheese</td>
+                      <td class="col-action-table">
+                        <a class="btn btn-success" th:href="@{categoria/{id}(id=${cat.idCategoria})}" title="Editar">
+                          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                        </a>
+                        <a class="btn btn-danger" data-toggle="modal" data-target="#excludeModal"
+                           th:attr="data-codigo=${cat.idCategoria}, data-descricao=${cat.descricao}"
+                           title="Excluir" rel="tooltip" data-placement="top">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </div><!-- /.box-body -->
             </div><!-- /.box -->
@@ -64,21 +63,24 @@
         </section>
 
 
-        <div id="excludeModal" class="modal modal-primary fade"  role="dialog">
+        <div id="excludeModal" class="modal fade"  role="dialog">
           <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                <h4 class="modal-title">Deseja realmente excluir este item?</h4>
-              </div>
-              <div class="modal-body">
-                <p>O item selecionado será excluido permanentemente.</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sair</button>
-                  <button class="btn btn-primary" >Continuar</button>
-                </div>
-              </div><!-- /.modal-content -->
+            <form th:attr="data-url-base='/categoria'" method="POST">
+              <input type="hidden" name="_method" value="DELETE"/>
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">Deseja realmente excluir este item?</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>O item selecionado será excluido permanentemente.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sair</button>
+                      <button class="btn btn-primary" >Continuar</button>
+                  </div>
+                </div><!-- /.modal-content -->
+            </form>
           </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
 
@@ -87,7 +89,26 @@
 
 
       <section layout:fragment="javascript-extra">
+        <script>
+          $('#excludeModal').on('show.bs.modal', function(event) {
+          debugger;
+            var button = $(event.relatedTarget);
 
+            var codigoTitulo = button.data('codigo');
+            var descricaoTitulo = button.data('descricao');
+
+            var modal = $(this);
+            var form = modal.find('form');
+            var action = form.data('url-base');
+            if (!action.endsWith('/')) {
+                action += '/';
+            }
+            form.attr('action', action + codigoTitulo);
+
+            modal.find('.modal-body p').html('Tem certeza que deseja excluir o item <strong>' + descricaoTitulo + '</strong>?');
+          });
+
+        </script>
       </section>
   </body>
 </html>

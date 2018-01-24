@@ -19,5 +19,6 @@ public class ProdutoDTO extends BaseDTO{
     @NumberFormat(pattern = "#,##0.00")
     private BigDecimal valorCusto;
     private CategoriaDTO categoria;
+    private String urlImg;
 
 }

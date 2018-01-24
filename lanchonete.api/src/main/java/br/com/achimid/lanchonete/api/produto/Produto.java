@@ -46,5 +46,7 @@ public class Produto extends EntidadeBase {
     @NotNull(message = "A categoria não pode ser nulla")
     private Categoria categoria;
 
+    private String urlImg;
+
 
 }

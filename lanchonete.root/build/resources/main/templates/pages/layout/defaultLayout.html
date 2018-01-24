@@ -2,13 +2,16 @@
 <html lang="en" xmlns="https://www.w3.org/1999/xhtml"
       xmlns:th="https://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head>
-  <block th:replace="pages/layout/headImport :: headImport"></block>
-</head>
+
+  <head th:replace="pages/layout/headImport :: headImport"></head>
+
   <body class="skin-blue fixed">
     <div class="wrapper" id="pagewrap">
-      <!-- HEADER LAYOUT -->
+      <!-- HEADER LAYOUT  CSS-->
       <block th:replace="pages/layout/headerLayout :: headerLayout"></block>
+
+      <!-- HEADER LAYOUT  JS-->
+      <block th:replace="pages/layout/jsImport :: jsImport"></block>
 
       <!-- Left side column. contains the sidebar -->
       <block th:replace="pages/layout/sideBarLayout :: sideBarLayout"></block>
@@ -17,7 +20,7 @@
       <div class="content-wrapper" >
 
         <!-- Body of page -->
-        <section layout:fragment="body"></section>
+        <section id="bodyPage" layout:fragment="body"></section>
 
       </div><!-- /.content-wrapper -->
 
@@ -34,10 +37,6 @@
         <path d="M 40,100 150,0 l 0,0 z"/>
       </svg>
     </div><!-- /pageload-overlay -->
-
-    <block th:replace="pages/layout/jsImport :: jsImport"></block>
-
-    <block th:replace="pages/layout/commonFuncions :: commonFuncions"></block>
 
     <th:block layout:fragment="javascript-extra"></th:block>
 

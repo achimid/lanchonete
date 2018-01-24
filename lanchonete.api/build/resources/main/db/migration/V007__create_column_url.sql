@@ -1,0 +1,2 @@
+ALTER TABLE produto ADD COLUMN url_img TEXT;
+ALTER TABLE categoria ADD COLUMN url_img TEXT;

@@ -3,7 +3,7 @@
       xmlns:th="https://www.thymeleaf.org">
 
       <header class="main-header" th:fragment="headerLayout">
-        <a th:href="@{/home}" class="logo"><b>Admin</b> Panel</a>
+        <a th:href="@{/home}" class="logo">Rest. <b>Bla Bla Bla </b></a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
           <!-- Sidebar toggle button-->
@@ -17,7 +17,7 @@
             <ul class="nav navbar-nav">
               <!-- Messages: style can be found in dropdown.less-->
               <li>
-                <a href="http://achimid.tk/"><strong>Pedido</strong></a>
+                <a th:href="@{/venda}"><strong>Venda</strong></a>
               </li>
               <li>
                 <a href="http://bla.com:3333">Mesas</a>

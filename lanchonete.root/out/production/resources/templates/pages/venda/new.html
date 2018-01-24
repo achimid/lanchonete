@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="pages/layout/defaultLayout">
+  <head>
+    <title>Venda</title>
+  </head>
+  <body >
+      <section layout:fragment="body">
+
+        <section class="content">
+          <div class="row">
+            <div class="col-xs-12">
+              <!-- Mensages -->
+              <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
+
+              <div id="passoCategoria" layout:include="pages/venda/passoCategoria :: passoCategoria"></div>
+              <div id="passoProduto"></div>
+
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section layout:fragment="javascript-extra">
+        <link th:href="@{/dist/css/pages/venda.css}" rel="stylesheet" type="text/css" />
+        <script th:src="@{/dist/js/pages/venda.js}" type="text/javascript"></script>
+      </section>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
+
+      <block layout:fragment="passoCategoria">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <a class="btn btn-box-tool btn-block" data-widget="collapse">
+                <h3 class="box-title">Categorias</h3>
+                <div class="box-tools pull-right">
+                  <button class="btn btn-box-tool btn-collapse-categoria" data-widget="collapse">
+                    <i class="fa fa-minus pull-right"></i>
+                  </button>
+                </div><!-- /.box-tools -->
+              </a>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+              <div class="text-center" th:if="${#lists.isEmpty(categorias)}">
+                <span> Nenhuma categoria encontrada!</span>
+              </div>
+
+
+              <div class="row">
+                  <div th:each="categoria : ${categorias}" class="col-md-4 col-sm-6 col-xs-12 rounded border">
+                    <div class="info-box btn-click btn-categoria" th:attr="data-idCategoria=${categoria.idCategoria}">
+                        <span class="info-box-icon">
+                          <img th:if="not ${#strings.isEmpty(categoria.urlImg)}" th:src="${categoria.urlImg}" class="img-thumbnail" th:title="${categoria.nome}"/>
+                          <img th:if="${#strings.isEmpty(categoria.urlImg)}" src="http://placehold.it/600x600" class="img-thumbnail" th:title="${categoria.nome}"/>
+                        </span>
+                      <div class="info-box-content">
+                        <span class="info-box-number" th:text="${categoria.nome}">Porções</span>
+                      </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                  </div>
+              </div>
+            </div><!-- /.box-body -->
+          </div><!-- /.box -->
+      </block>
+</html>

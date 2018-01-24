@@ -11,5 +11,6 @@ public class CategoriaDTO extends BaseDTO{
     private Long idCategoria;
     private String nome;
     private String descricao;
+    private String urlImg;
 
 }
