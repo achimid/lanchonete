@@ -15,6 +15,10 @@ public class ProdutoService {
         return (List<Produto>) produtoRepository.findAll();
     }
 
+    public List<Produto> findByCategoria(Long idCategoria){
+        return produtoRepository.findByCategoriaIdCategoria(idCategoria);
+    }
+
     public Produto findOne(Long id) {
         return produtoRepository.findOne(id);
     }

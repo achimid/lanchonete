@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">7</div>
+<div class="counter">0</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">0.328s</div>
+<div class="counter">-</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox success" id="successRate">
-<div class="percent">100%</div>
+<div class="percent">-</div>
 <p>successful</p>
 </div>
 </td>
@@ -77,88 +77,15 @@
 <th>Result</th>
 </tr>
 </thead>
-<tr>
-<td class="success">none</td>
-<td>0.028s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">rest01GetAllFormaPagamento</td>
-<td>0.053s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">rest02PostFormaPagamento</td>
-<td>0.053s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">rest03PutFormaPagamento</td>
-<td>0.053s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">rest04GetFormaPagamento</td>
-<td>0.042s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">rest05DeleteFormaPagamento</td>
-<td>0.060s</td>
-<td class="success">passed</td>
-</tr>
-<tr>
-<td class="success">rest06DeleteFormaPagamentoNotFound</td>
-<td>0.039s</td>
-<td class="success">passed</td>
-</tr>
 </table>
 </div>
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2018-01-24 19:56:03.199  INFO 16140 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.FormaPagamentoRestControllerTest], using SpringBootContextLoader
-2018-01-24 19:56:03.200  INFO 16140 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.FormaPagamentoRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2018-01-24 19:56:03.205  INFO 16140 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2018-01-24 19:56:03.209  INFO 16140 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@38e575e2, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@4a0fe0eb, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@363f70d5, org.springframework.test.context.support.DirtiesContextTestExecutionListener@376cdb2d, org.springframework.test.context.transaction.TransactionalTestExecutionListener@2435e247, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@11884692, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@5c7c25ae, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@d1828bf, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@634c481, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@55dbbe03, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6837a043, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2426202a]
-2018-01-24 19:56:03.218  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.218  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.223  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 5 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-Hibernate: select formapagam0_.id_forma_pagamento as id_forma1_1_0_, formapagam0_.ativo as ativo2_1_0_, formapagam0_.nome as nome3_1_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-2018-01-24 19:56:03.272  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.272  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.276  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-2018-01-24 19:56:03.326  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.326  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.329  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-Hibernate: select formapagam0_.id_forma_pagamento as id_forma1_1_0_, formapagam0_.ativo as ativo2_1_0_, formapagam0_.nome as nome3_1_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-Hibernate: update forma_pagamento set ativo=?, nome=? where id_forma_pagamento=?
-2018-01-24 19:56:03.381  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.381  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.385  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-Hibernate: select formapagam0_.id_forma_pagamento as id_forma1_1_0_, formapagam0_.ativo as ativo2_1_0_, formapagam0_.nome as nome3_1_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-2018-01-24 19:56:03.424  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.424  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.427  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-Hibernate: select count(*) as col_0_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-Hibernate: select count(*) as col_0_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-Hibernate: select formapagam0_.id_forma_pagamento as id_forma1_1_0_, formapagam0_.ativo as ativo2_1_0_, formapagam0_.nome as nome3_1_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-Hibernate: delete from forma_pagamento where id_forma_pagamento=?
-2018-01-24 19:56:03.488  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.489  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.497  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 8 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
-Hibernate: select count(*) as col_0_0_ from forma_pagamento formapagam0_ where formapagam0_.id_forma_pagamento=?
-2018-01-24 19:56:03.527  INFO 16140 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-24 19:56:03.527  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-24 19:56:03.538  INFO 16140 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 11 ms
-Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+<pre>2018-01-24 21:01:49.796  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.FormaPagamentoRestControllerTest], using SpringBootContextLoader
+2018-01-24 21:01:49.797  INFO 20588 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.FormaPagamentoRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-01-24 21:01:49.803  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-01-24 21:01:49.805  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@283ff7e7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@2656237f, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@30a95edd, org.springframework.test.context.support.DirtiesContextTestExecutionListener@7ec8bff5, org.springframework.test.context.transaction.TransactionalTestExecutionListener@291fef04, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3e456c83, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@44e09220, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@7f6cba5e, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@295d0d78, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@3ce94da4, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@7cd8a98b, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@66fc5204]
 </pre>
 </span>
 </div>
@@ -170,7 +97,7 @@ Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 3.5.1</a> at 24/01/2018 19:56:04</p>
+<a href="http://www.gradle.org">Gradle 3.5.1</a> at 24/01/2018 21:01:49</p>
 </div>
 </div>
 </body>

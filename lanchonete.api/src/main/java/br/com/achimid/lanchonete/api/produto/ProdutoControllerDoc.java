@@ -5,14 +5,16 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.util.List;
 
 public interface ProdutoControllerDoc {
 
-    @ApiOperation("Lista todos os produtos")
-    public List<Produto> index();
+    @ApiOperation("Lista todos os produtos ou filtrar por categoria")
+    public List<Produto> index(
+            @RequestParam(value = "idCategoria", required = false) Long idCategoria);
 
     @ApiOperation(value = "Retorna um produto com o id informado")
     public HttpEntity<Produto> get(@PathVariable Long id);

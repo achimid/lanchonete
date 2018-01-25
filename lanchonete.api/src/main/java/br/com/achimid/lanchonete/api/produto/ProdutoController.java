@@ -16,7 +16,11 @@ public class ProdutoController implements ProdutoControllerDoc {
     private ProdutoService produtoService;
 
     @GetMapping()
-    public List<Produto> index() {
+    public List<Produto> index(
+            @RequestParam(value = "idCategoria", required = false) Long idCategoria) {
+        if(idCategoria != null){
+            return produtoService.findByCategoria(idCategoria);
+        }
         return produtoService.findAll();
     }
 

@@ -6,10 +6,14 @@
   <div layout:fragment="passoProduto" id="passoProduto">
     <div class="box box-default">
       <div class="box-header with-border">
-        <h3 class="box-title">Produtos</h3>
-        <div class="box-tools pull-right">
-          <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        </div><!-- /.box-tools -->
+        <a class="btn btn-box-tool btn-block" data-widget="collapse">
+          <h3 class="box-title">Produtos</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool btn-collapse-produto" data-widget="collapse">
+              <i class="fa fa-minus pull-right"></i>
+            </button>
+          </div><!-- /.box-tools -->
+        </a>
       </div><!-- /.box-header -->
       <div class="box-body">
 
@@ -19,7 +23,7 @@
 
         <div class="row">
           <div th:each="produto : ${produtos}" class="col-md-4 col-sm-6 col-xs-12 rounded border">
-            <div class="info-box btn-click btn-produto" th:attr="data-idProduto=${produto.idProduto}">
+            <div class="info-box btn-click btn-produto" th:attr="data-idproduto=${produto.idProduto}">
                   <span class="info-box-icon">
                     <img th:if="not ${#strings.isEmpty(produto.urlImg)}" th:src="${produto.urlImg}" class="img-thumbnail" th:title="${produto.nome}"/>
                     <img th:if="${#strings.isEmpty(produto.urlImg)}" src="http://placehold.it/600x600" class="img-thumbnail" th:title="${produto.nome}"/>
@@ -29,9 +33,6 @@
                   <span th:text="${produto.nome}">Nome</span>
                   <small class="label pull-right bg-green" th:text="${ 'R$  ' + #numbers.formatDecimal(produto.valorVenda, 0, 'DEFAULT', 2, 'DEFAULT')}">Valor venda</small>
                 </span>
-
-
-
 
                 <div>
                   <span class="info-box-text wrap-2" th:text="${produto.descricao}">Descrição</span>

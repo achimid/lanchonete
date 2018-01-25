@@ -4,6 +4,7 @@ import br.com.achimid.lanchonete.api.base.TestBase;
 import br.com.achimid.lanchonete.api.categoria.Categoria;
 import br.com.achimid.lanchonete.api.categoria.CategoriaRepository;
 import br.com.achimid.lanchonete.api.produto.ProdutoRepository;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
@@ -57,6 +58,11 @@ public class CategoriaRestControllerTest extends TestBase {
         categorias.add(this.categoriaRepository.save(getNewCategoria()));
     }
 
+    @After
+    public void finishi() throws Exception{
+        categoriaRepository.delete(categorias);
+    }
+
 
     @Test
     public void rest01GetAllCategoria() throws Exception {
@@ -68,7 +74,7 @@ public class CategoriaRestControllerTest extends TestBase {
 
     @Test
     public void rest02PostCategoria() throws Exception {
-        String categoriaJson = json(getNewCategoria());
+        String categoriaJson = json(categorias.get(0));
 
         this.mockMvc.perform(post(END_POINT_CATEGORIA)
                 .contentType(contentType)
@@ -80,6 +86,7 @@ public class CategoriaRestControllerTest extends TestBase {
     public void rest03PutCategoria() throws Exception {
         Categoria cat = categorias.get(0);
         cat.setNome("Nome 2 da Categoria");
+        categorias.add(cat);
 
         String categoriaJson = json(cat);
 
@@ -111,37 +118,5 @@ public class CategoriaRestControllerTest extends TestBase {
                 .contentType(contentType))
                 .andExpect(status().isNotFound());
     }
-
-
-    //@Test
-    //public void categoriaNotFound() throws Exception {
-            //    mockMvc.perform(post(END_POINT_CATEGORIA)
-            //            .content(this.json(new Categoria()))
-            //            .contentType(contentType))
-    //            .andExpect(status().isNotFound());
-    //}
-
-    //@Test
-    //public void readSingleCategoria() throws Exception {
-    //    mockMvc.perform(get(END_POINT_CATEGORIA.concat(this.categorias.get(0).getId().toString())))
-    //            .andExpect(status().isOk())
-    //            .andExpect(content().contentType(contentType))
-    //            .andExpect(jsonPath("$.id", is(this.categorias.get(0).getId().intValue())))
-    //            .andExpect(jsonPath("$.descricao", is("Descrição da categoria")));
-    //}
-
-    //@Test
-    //public void createBookmark() throws Exception {
-        //String bookmarkJson = json(new Bookmark(
-        //        this.account, "http://spring.io", "a bookmark to the best resource for Spring news and information"));
-
-        //this.mockMvc.perform(post("/" + userName + "/bookmarks")
-        //              .contentType(contentType)
-        //              .content(bookmarkJson))
-        //        .andExpect(status().isCreated());
-    //}
-
-
-
 
 }
