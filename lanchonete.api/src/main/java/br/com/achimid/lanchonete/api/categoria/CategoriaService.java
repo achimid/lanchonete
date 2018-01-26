@@ -1,5 +1,6 @@
 package br.com.achimid.lanchonete.api.categoria;
 
+import br.com.achimid.lanchonete.api.base.AppUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Example;
@@ -45,6 +46,7 @@ public class CategoriaService {
     }
 
     public void save(Categoria categoria) {
+        //this.saveImage(categoria);
         categoriaRepository.save(categoria);
     }
 
@@ -67,5 +69,18 @@ public class CategoriaService {
     }
     public Boolean exists(Long id){
         return categoriaRepository.exists(id);
+    }
+
+    private void saveImage(Categoria categoria){
+        if(categoria != null && categoria.getUrlImg() != null && !categoria.getUrlImg().isEmpty() && categoria.getUrl() == null){
+            String url = null;
+            try {
+                url = AppUtil.getInstance()
+                        .copyImageToResource(categoria.getUrlImg(), "cat" + categoria.getIdCategoria());
+            }catch (Exception e){
+                System.err.println("Erro ao salvar imagem no resource");
+            }
+            categoria.setUrl(url);
+        }
     }
 }

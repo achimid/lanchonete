@@ -1,0 +1,2 @@
+ALTER TABLE produto ADD COLUMN url TEXT;
+ALTER TABLE categoria ADD COLUMN url TEXT;

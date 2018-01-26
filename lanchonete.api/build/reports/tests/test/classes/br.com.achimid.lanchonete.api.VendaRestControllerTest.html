@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">0</div>
+<div class="counter">3</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">-</div>
+<div class="counter">0.671s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox success" id="successRate">
-<div class="percent">-</div>
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -77,15 +77,98 @@
 <th>Result</th>
 </tr>
 </thead>
+<tr>
+<td class="success">none</td>
+<td>0.143s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest01VendaCheckout</td>
+<td>0.344s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest02GetVenda</td>
+<td>0.184s</td>
+<td class="success">passed</td>
+</tr>
 </table>
 </div>
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2018-01-24 21:01:49.808  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.VendaRestControllerTest], using SpringBootContextLoader
-2018-01-24 21:01:49.808  INFO 20588 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.VendaRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2018-01-24 21:01:49.815  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2018-01-24 21:01:49.817  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@3a6b7516, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7e164aae, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6ced66f7, org.springframework.test.context.support.DirtiesContextTestExecutionListener@636bb62, org.springframework.test.context.transaction.TransactionalTestExecutionListener@6714ad77, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@2b9bd801, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@2c46c95b, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@1f989a1a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5d25e38b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@280b63fe, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@329d7bb5, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@698e6fb6]
+<pre>2018-01-25 00:16:35.529  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.VendaRestControllerTest], using SpringBootContextLoader
+2018-01-25 00:16:35.529  INFO 18555 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.VendaRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-01-25 00:16:35.533  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-01-25 00:16:35.536  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@66b0b1e7, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@696dc726, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@3836ca01, org.springframework.test.context.support.DirtiesContextTestExecutionListener@2c6fd644, org.springframework.test.context.transaction.TransactionalTestExecutionListener@4f3375a7, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@48e0cf90, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@4688624f, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@1487412c, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@404d8056, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@e9f4b80, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@b00da06, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2520646b]
+2018-01-25 00:16:35.542  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-25 00:16:35.542  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-25 00:16:35.546  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into venda (data_venda, valor_final) values (?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into venda (data_venda, valor_final) values (?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+2018-01-25 00:16:35.889  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-25 00:16:35.891  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-25 00:16:35.894  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into venda (data_venda, valor_final) values (?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+Hibernate: select venda0_.id_venda as id_venda1_3_0_, venda0_.data_venda as data_ven2_3_0_, venda0_.valor_final as valor_fi3_3_0_ from venda venda0_ where venda0_.id_venda=?
+Hibernate: select listaitens0_.id_venda_item as id_venda1_4_0_, listaitens0_.id_venda_item as id_venda1_4_1_, listaitens0_.produto_id_produto as produto_4_4_1_, listaitens0_.qtde as qtde2_4_1_, listaitens0_.valor as valor3_4_1_, listaitens0_.venda_id_venda as venda_id5_4_1_, produto1_.id_produto as id_produ1_2_2_, produto1_.categoria_id_categoria as categori7_2_2_, produto1_.descricao as descrica2_2_2_, produto1_.nome as nome3_2_2_, produto1_.url_img as url_img4_2_2_, produto1_.valor_custo as valor_cu5_2_2_, produto1_.valor_venda as valor_ve6_2_2_, categoria2_.id_categoria as id_categ1_0_3_, categoria2_.descricao as descrica2_0_3_, categoria2_.nome as nome3_0_3_, categoria2_.url_img as url_img4_0_3_ from venda_item listaitens0_ left outer join produto produto1_ on listaitens0_.produto_id_produto=produto1_.id_produto left outer join categoria categoria2_ on produto1_.categoria_id_categoria=categoria2_.id_categoria where listaitens0_.id_venda_item=?
+Hibernate: select pagamentos0_.id_venda_pagamento as id_venda1_5_0_, pagamentos0_.id_venda_pagamento as id_venda1_5_1_, pagamentos0_.forma_pagamento_id_forma_pagamento as forma_pa3_5_1_, pagamentos0_.valor as valor2_5_1_, pagamentos0_.venda_id_venda as venda_id4_5_1_, formapagam1_.id_forma_pagamento as id_forma1_1_2_, formapagam1_.ativo as ativo2_1_2_, formapagam1_.nome as nome3_1_2_ from venda_pagamento pagamentos0_ inner join forma_pagamento formapagam1_ on pagamentos0_.forma_pagamento_id_forma_pagamento=formapagam1_.id_forma_pagamento where pagamentos0_.id_venda_pagamento=?
+2018-01-25 00:16:36.074  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-01-25 00:16:36.074  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-01-25 00:16:36.077  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into forma_pagamento (ativo, nome) values (?, ?)
+Hibernate: insert into venda (data_venda, valor_final) values (?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_item (produto_id_produto, qtde, valor, venda_id_venda) values (?, ?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
+Hibernate: insert into venda_pagamento (forma_pagamento_id_forma_pagamento, valor, venda_id_venda) values (?, ?, ?)
 </pre>
 </span>
 </div>
@@ -97,7 +180,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 3.5.1</a> at 24/01/2018 21:01:49</p>
+<a href="http://www.gradle.org">Gradle 3.5.1</a> at 25/01/2018 00:16:36</p>
 </div>
 </div>
 </body>

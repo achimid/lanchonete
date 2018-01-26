@@ -10,21 +10,24 @@
       <section layout:fragment="body">
 
         <section class="content">
-          <div class="row">
+          <div class="container-fluid">
+            <div class="row">
             <div class="col-md-12">
               <!-- Mensages -->
               <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
 
+              <div id="passoMesa" layout:include="pages/venda/passoMesa :: passoMesa"></div>
               <div id="passoCategoria" layout:include="pages/venda/passoCategoria :: passoCategoria"></div>
               <div id="passoProduto"/>
               <div id="passoOpcoesProduto"/>
-              <div id="passoMesa"/>
+              <div id="passoConfirmar" class="hidden" layout:include="pages/venda/passoConfirmar :: passoConfirmar"></div>
 
               <div class="col-md-12">
                 <button class="btn btn-primary pull-right hidden" name="btnConcluir">Concluir</button>
               </div>
 
             </div>
+          </div>
           </div>
         </section>
       </section>

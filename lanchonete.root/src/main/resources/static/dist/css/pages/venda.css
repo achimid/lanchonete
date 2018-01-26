@@ -27,3 +27,23 @@
     white-space: normal !important;
 }
 
+.small-box.selected{
+    outline: 7px double #4e4b40c4;
+}
+
+.line {
+    /*border-bottom: solid 1px;*/
+   font-size: 16px;
+}
+
+.padding-left-8{
+    padding-left: 8px;
+}
+
+.margin-top-10{
+    margin-top: 10px !important;
+}
+
+.label-lg{
+    font-size: 14px;
+}

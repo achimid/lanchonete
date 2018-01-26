@@ -11,12 +11,18 @@
 
         <section class="content">
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-md-12">
               <!-- Mensages -->
               <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
 
               <div id="passoCategoria" layout:include="pages/venda/passoCategoria :: passoCategoria"></div>
-              <div id="passoProduto"></div>
+              <div id="passoProduto"/>
+              <div id="passoOpcoesProduto"/>
+              <div id="passoMesa"/>
+
+              <div class="col-md-12">
+                <button class="btn btn-primary pull-right hidden" name="btnConcluir">Concluir</button>
+              </div>
 
             </div>
           </div>

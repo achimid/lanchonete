@@ -7,7 +7,7 @@
           <div class="box box-default">
             <div class="box-header with-border">
               <a class="btn btn-box-tool btn-block" data-widget="collapse">
-                <h3 class="box-title">Opções</h3>
+                <h3 class="box-title"> <span th:text="${produto.nome}"></span> - Opções</h3>
                 <div class="box-tools pull-right">
                   <button class="btn btn-box-tool btn-collapse-opcoes-produto" data-widget="collapse">
                     <i class="fa fa-minus pull-right"></i>
@@ -17,28 +17,37 @@
             </div><!-- /.box-header -->
             <div class="box-body">
                 <div class="container-fluid">
-                    <div class="form-group col-md-12">
-                        <input class="form-control hidden" type="text" name="produto.idProduto" th:value="${produto.idProduto}"/>
-                        <div class="form-group col-md-2">
-                            <label class="label-control"> Quantidade:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon btn-remove-qtde"><i class="fa fa-minus-square-o" aria-hidden="true"></i></span>
-                                <input class="form-control" type="number" name="item.qtde" value="1"/>
-                                <span class="input-group-addon btn-add-qtde"><i class="fa fa-plus-square-o" aria-hidden="true"></i></span>
-                            </div>
+
+                    <input class="form-control hidden" type="text" name="produto.idProduto" th:value="${produto.idProduto}"/>
+                    <div class="form-group col-md-2">
+                        <label class="label-control"> Quantidade:</label>
+                        <div class="input-group">
+                            <span class="input-group-addon btn-remove-qtde"><i class="fa fa-minus-square-o" aria-hidden="true"></i></span>
+                            <input class="form-control" type="number" name="item.qtde" value="1"/>
+                            <span class="input-group-addon btn-add-qtde"><i class="fa fa-plus-square-o" aria-hidden="true"></i></span>
                         </div>
-                        <div class="form-group col-md-10">
-                            <label class="label-control"> Descrição:</label>
-                            <div class="input-group">
-                                <span th:if="${#strings.isEmpty(produto.descricao)}"> Produto sem descrição!</span>
-                                <span th:if="not ${#strings.isEmpty(produto.descricao)}" th:text="${produto.descricao}" class="info-box-text wrap-2"></span>
+                    </div>
+                    <div class="form-group col-md-10">
+                        <label class="label-control"> Descrição:</label>
+                        <div class="input-group">
+                            <span th:if="${#strings.isEmpty(produto.descricao)}"> Produto sem descrição!</span>
+                            <span th:if="not ${#strings.isEmpty(produto.descricao)}" th:text="${produto.descricao}" class="info-box-text wrap-2"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label class="label-control"> Opções:</label>
+                            <div class="text-center" th:if="${#lists.isEmpty(opcoes)}">
+                                <span> <b>Nenhuma opção encontrada! </b></span>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-12">
-                        <div class="text-center" th:if="${#lists.isEmpty(opcoes)}">
-                            <span> <b>Nenhuma opção encontrada! </b></span>
+                        <div class="form-group">
+                            <label class="label-control"> Observação:</label>
+                            <textarea class="form-control" type="text" name="item.observacao" value="1"/>
                         </div>
                     </div>
 

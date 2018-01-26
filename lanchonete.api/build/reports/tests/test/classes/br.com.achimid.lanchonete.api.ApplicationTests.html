@@ -23,7 +23,7 @@
 <tr>
 <td>
 <div class="infoBox" id="tests">
-<div class="counter">0</div>
+<div class="counter">1</div>
 <p>tests</p>
 </div>
 </td>
@@ -41,7 +41,7 @@
 </td>
 <td>
 <div class="infoBox" id="duration">
-<div class="counter">-</div>
+<div class="counter">0.006s</div>
 <p>duration</p>
 </div>
 </td>
@@ -51,7 +51,7 @@
 </td>
 <td>
 <div class="infoBox success" id="successRate">
-<div class="percent">-</div>
+<div class="percent">100%</div>
 <p>successful</p>
 </div>
 </td>
@@ -66,6 +66,9 @@
 <li>
 <a href="#tab1">Standard output</a>
 </li>
+<li>
+<a href="#tab2">Standard error</a>
+</li>
 </ul>
 <div id="tab0" class="tab">
 <h2>Tests</h2>
@@ -77,17 +80,107 @@
 <th>Result</th>
 </tr>
 </thead>
+<tr>
+<td class="success">contextLoads</td>
+<td>0.006s</td>
+<td class="success">passed</td>
+</tr>
 </table>
 </div>
 <div id="tab1" class="tab">
 <h2>Standard output</h2>
 <span class="code">
-<pre>2018-01-24 21:01:49.774  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.ApplicationTests], using SpringBootContextLoader
-2018-01-24 21:01:49.775  INFO 20588 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.ApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
-2018-01-24 21:01:49.777  INFO 20588 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.achimid.lanchonete.api.ApplicationTests]: ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2018-01-24 21:01:49.788  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.achimid.lanchonete.api.Application for test class br.com.achimid.lanchonete.api.ApplicationTests
-2018-01-24 21:01:49.791  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2018-01-24 21:01:49.794  INFO 20588 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@685033c8, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@6a1c0522, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@1e6047e3, org.springframework.test.context.support.DirtiesContextTestExecutionListener@740cdd2e, org.springframework.test.context.transaction.TransactionalTestExecutionListener@1dab7e14, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@17144d96, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@b574fc8, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@19200621, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@5fbd90cf, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6a701e53, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@5be825da, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@42603188]
+<pre>2018-01-25 00:16:31.386  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.ApplicationTests], using SpringBootContextLoader
+2018-01-25 00:16:31.387  INFO 18555 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.ApplicationTests]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-01-25 00:16:31.389  INFO 18555 --- [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [br.com.achimid.lanchonete.api.ApplicationTests]: ApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2018-01-25 00:16:31.398  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration br.com.achimid.lanchonete.api.Application for test class br.com.achimid.lanchonete.api.ApplicationTests
+2018-01-25 00:16:31.400  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-01-25 00:16:31.403  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@4a3ffc73, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@1ce394a5, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@41df8461, org.springframework.test.context.support.DirtiesContextTestExecutionListener@65b41b8c, org.springframework.test.context.transaction.TransactionalTestExecutionListener@50ddaf2d, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@501b4f2f, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@6d5a35c1, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@28f73b9d, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@156e5d69, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@1f860adc, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@234ed0d0, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@32f43cf7]
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v1.5.8.RELEASE)
+
+2018-01-25 00:16:31.443  INFO 18555 --- [    Test worker] b.c.a.lanchonete.api.ApplicationTests    : Starting ApplicationTests on lourran-PC with PID 18555 (started by lourran in /home/lourran/Documentos/workspace/lanchonete/lanchonete.api)
+2018-01-25 00:16:31.447  INFO 18555 --- [    Test worker] b.c.a.lanchonete.api.ApplicationTests    : No active profile set, falling back to default profiles: default
+2018-01-25 00:16:31.450  INFO 18555 --- [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@b971424: startup date [Thu Jan 25 00:16:31 BRST 2018]; root of context hierarchy
+2018-01-25 00:16:32.215  INFO 18555 --- [    Test worker] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5d78824a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-01-25 00:16:32.963  INFO 18555 --- [    Test worker] o.f.c.i.dbsupport.DbSupportFactory       : Database: jdbc:mysql://localhost:3306/lanchonete (MySQL 5.7)
+2018-01-25 00:16:32.995  INFO 18555 --- [    Test worker] o.f.core.internal.command.DbValidate     : Validated 7 migrations (execution time 00:00.030s)
+2018-01-25 00:16:33.012  INFO 18555 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Current version of schema `lanchonete`: 007
+2018-01-25 00:16:33.014  INFO 18555 --- [    Test worker] o.f.core.internal.command.DbMigrate      : Schema `lanchonete` is up to date. No migration necessary.
+2018-01-25 00:16:33.100  INFO 18555 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-01-25 00:16:33.101  INFO 18555 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-01-25 00:16:33.107  INFO 18555 --- [    Test worker] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-01-25 00:16:33.192  WARN 18555 --- [    Test worker] o.h.j.i.EntityManagerFactoryRegistry     : HHH000436: Entity manager factory name (default) is already registered.  If entity manager will be clustered or passivated, specify a unique value for property 'hibernate.ejb.entitymanager_factory_name'
+2018-01-25 00:16:33.192  INFO 18555 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-01-25 00:16:33.865  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/categoria],methods=[GET]}&quot; onto public java.util.List&lt;br.com.achimid.lanchonete.api.categoria.Categoria&gt; br.com.achimid.lanchonete.api.categoria.CategoriaController.index()
+2018-01-25 00:16:33.866  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/categoria/{id}],methods=[GET]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.categoria.Categoria&gt; br.com.achimid.lanchonete.api.categoria.CategoriaController.get(java.lang.Long)
+2018-01-25 00:16:33.867  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/categoria],methods=[PUT]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; br.com.achimid.lanchonete.api.categoria.CategoriaController.update(br.com.achimid.lanchonete.api.categoria.Categoria)
+2018-01-25 00:16:33.867  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/categoria/{id}],methods=[DELETE]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; br.com.achimid.lanchonete.api.categoria.CategoriaController.delete(java.lang.Long)
+2018-01-25 00:16:33.867  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/categoria],methods=[POST]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.categoria.Categoria&gt; br.com.achimid.lanchonete.api.categoria.CategoriaController.create(br.com.achimid.lanchonete.api.categoria.Categoria)
+2018-01-25 00:16:33.893  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/venda/{id}],methods=[GET]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.compra.venda.Venda&gt; br.com.achimid.lanchonete.api.compra.venda.VendaController.getVenda(java.lang.Long)
+2018-01-25 00:16:33.894  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/venda],methods=[POST]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.compra.venda.Venda&gt; br.com.achimid.lanchonete.api.compra.venda.VendaController.checkouVenda(br.com.achimid.lanchonete.api.compra.venda.Venda)
+2018-01-25 00:16:33.894  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/venda],methods=[GET]}&quot; onto public java.util.List&lt;br.com.achimid.lanchonete.api.compra.venda.Venda&gt; br.com.achimid.lanchonete.api.compra.venda.VendaController.index()
+2018-01-25 00:16:33.898  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/formaPagamento],methods=[GET]}&quot; onto public java.util.List&lt;br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento&gt; br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoController.index()
+2018-01-25 00:16:33.898  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/formaPagamento/{id}],methods=[GET]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento&gt; br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoController.get(java.lang.Long)
+2018-01-25 00:16:33.898  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/formaPagamento],methods=[PUT]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoController.update(br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento)
+2018-01-25 00:16:33.898  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/formaPagamento/{id}],methods=[DELETE]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoController.delete(java.lang.Long)
+2018-01-25 00:16:33.898  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/formaPagamento],methods=[POST]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento&gt; br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoController.create(br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento)
+2018-01-25 00:16:33.922  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/produto],methods=[GET]}&quot; onto public java.util.List&lt;br.com.achimid.lanchonete.api.produto.Produto&gt; br.com.achimid.lanchonete.api.produto.ProdutoController.index(java.lang.Long)
+2018-01-25 00:16:33.932  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/produto/{id}],methods=[GET]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.produto.Produto&gt; br.com.achimid.lanchonete.api.produto.ProdutoController.get(java.lang.Long)
+2018-01-25 00:16:33.932  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/produto],methods=[PUT]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; br.com.achimid.lanchonete.api.produto.ProdutoController.update(br.com.achimid.lanchonete.api.produto.Produto)
+2018-01-25 00:16:33.933  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/produto/{id}],methods=[DELETE]}&quot; onto public org.springframework.http.HttpEntity&lt;?&gt; br.com.achimid.lanchonete.api.produto.ProdutoController.delete(java.lang.Long)
+2018-01-25 00:16:33.933  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/api/v1/produto],methods=[POST]}&quot; onto public org.springframework.http.HttpEntity&lt;br.com.achimid.lanchonete.api.produto.Produto&gt; br.com.achimid.lanchonete.api.produto.ProdutoController.create(br.com.achimid.lanchonete.api.produto.Produto)
+2018-01-25 00:16:33.934  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/v2/api-docs],methods=[GET],produces=[application/json || application/hal+json]}&quot; onto public org.springframework.http.ResponseEntity&lt;springfox.documentation.spring.web.json.Json&gt; springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)
+2018-01-25 00:16:33.939  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/configuration/security]}&quot; onto org.springframework.http.ResponseEntity&lt;springfox.documentation.swagger.web.SecurityConfiguration&gt; springfox.documentation.swagger.web.ApiResourceController.securityConfiguration()
+2018-01-25 00:16:33.940  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/swagger-resources]}&quot; onto org.springframework.http.ResponseEntity&lt;java.util.List&lt;springfox.documentation.swagger.web.SwaggerResource&gt;&gt; springfox.documentation.swagger.web.ApiResourceController.swaggerResources()
+2018-01-25 00:16:33.945  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/configuration/ui]}&quot; onto org.springframework.http.ResponseEntity&lt;springfox.documentation.swagger.web.UiConfiguration&gt; springfox.documentation.swagger.web.ApiResourceController.uiConfiguration()
+2018-01-25 00:16:34.335  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error],produces=[text/html]}&quot; onto public org.springframework.web.servlet.ModelAndView org.springframework.boot.autoconfigure.web.BasicErrorController.errorHtml(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2018-01-25 00:16:34.335  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped &quot;{[/error]}&quot; onto public org.springframework.http.ResponseEntity&lt;java.util.Map&lt;java.lang.String, java.lang.Object&gt;&gt; org.springframework.boot.autoconfigure.web.BasicErrorController.error(javax.servlet.http.HttpServletRequest)
+2018-01-25 00:16:34.663  INFO 18555 --- [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : Looking for @ControllerAdvice: org.springframework.web.context.support.GenericWebApplicationContext@b971424: startup date [Thu Jan 25 00:16:31 BRST 2018]; root of context hierarchy
+2018-01-25 00:16:34.681  INFO 18555 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Root mapping to handler of type [class org.springframework.web.servlet.mvc.ParameterizableViewController]
+2018-01-25 00:16:34.692  INFO 18555 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/swagger-ui.html] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-25 00:16:34.692  INFO 18555 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/webjars/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-25 00:16:34.692  INFO 18555 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-25 00:16:34.741  INFO 18555 --- [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Mapped URL path [/**/favicon.ico] onto handler of type [class org.springframework.web.servlet.resource.ResourceHttpRequestHandler]
+2018-01-25 00:16:34.999  INFO 18555 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2018-01-25 00:16:35.000  INFO 18555 --- [    Test worker] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2018-01-25 00:16:35.005  INFO 18555 --- [    Test worker] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2018-01-25 00:16:35.089  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createUsingPOST_1
+2018-01-25 00:16:35.092  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_1
+2018-01-25 00:16:35.096  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_1
+2018-01-25 00:16:35.102  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_1
+2018-01-25 00:16:35.110  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_1
+2018-01-25 00:16:35.124  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: createUsingPOST_2
+2018-01-25 00:16:35.130  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteUsingDELETE_2
+2018-01-25 00:16:35.137  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: getUsingGET_2
+2018-01-25 00:16:35.144  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_2
+2018-01-25 00:16:35.149  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: updateUsingPUT_2
+2018-01-25 00:16:35.179  INFO 18555 --- [    Test worker] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: indexUsingGET_3
+2018-01-25 00:16:35.187  INFO 18555 --- [    Test worker] b.c.a.lanchonete.api.ApplicationTests    : Started ApplicationTests in 3.778 seconds (JVM running for 15.023)
+</pre>
+</span>
+</div>
+<div id="tab2" class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
+Thu Jan 25 00:16:32 BRST 2018 WARN: Establishing SSL connection without server's identity verification is not recommended. According to MySQL 5.5.45+, 5.6.26+ and 5.7.6+ requirements SSL connection must be established by default if explicit option isn't set. For compliance with existing applications not using SSL the verifyServerCertificate property is set to 'false'. You need either to explicitly disable SSL by setting useSSL=false, or set useSSL=true and provide truststore for server certificate verification.
 </pre>
 </span>
 </div>
@@ -99,7 +192,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="http://www.gradle.org">Gradle 3.5.1</a> at 24/01/2018 21:01:49</p>
+<a href="http://www.gradle.org">Gradle 3.5.1</a> at 25/01/2018 00:16:36</p>
 </div>
 </div>
 </body>

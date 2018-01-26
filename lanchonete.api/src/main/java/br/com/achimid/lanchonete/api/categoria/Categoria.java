@@ -28,4 +28,7 @@ public class Categoria extends EntidadeBase{
 
     private String urlImg;
 
+    private String url;
+
+
 }

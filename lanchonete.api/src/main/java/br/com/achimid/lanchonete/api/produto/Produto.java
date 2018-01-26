@@ -48,5 +48,7 @@ public class Produto extends EntidadeBase {
 
     private String urlImg;
 
+    private String url;
+
 
 }

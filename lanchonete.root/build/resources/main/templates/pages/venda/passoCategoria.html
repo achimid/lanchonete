@@ -28,9 +28,10 @@
                           <img th:if="not ${#strings.isEmpty(categoria.urlImg)}" th:src="${categoria.urlImg}" class="img-thumbnail" th:title="${categoria.nome}"/>
                           <img th:if="${#strings.isEmpty(categoria.urlImg)}" src="http://placehold.it/600x600" class="img-thumbnail" th:title="${categoria.nome}"/>
                         </span>
-                      <div class="info-box-content">
-                        <span class="info-box-number" th:text="${categoria.nome}">Porções</span>
-                      </div><!-- /.info-box-content -->
+                        <div class="info-box-content">
+                          <span class="info-box-number" th:text="${categoria.nome}">Porções</span>
+                        </div><!-- /.info-box-content -->
+                        <span class="info-box-text" th:text="${categoria.descricao}">Descrição</span>
                     </div><!-- /.info-box -->
                   </div>
               </div>
