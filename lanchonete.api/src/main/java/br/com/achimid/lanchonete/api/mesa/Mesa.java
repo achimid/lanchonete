@@ -4,10 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Data
@@ -24,4 +21,6 @@ public class Mesa {
     @NotEmpty(message = "Descrição da mesa nao pode ser vazia")
     private String descricao;
 
+    @Transient
+    private String status;
 }

@@ -1,73 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2018-01-25T02:16:29" hostname="lourran-PC" time="1.143">
+<testsuite name="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="lourran-PC" time="0.0">
   <properties/>
-  <testcase name="rest01GetAllCategoria" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.419"/>
-  <testcase name="rest02PostCategoria" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.071"/>
-  <testcase name="rest03PutCategoria" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.133"/>
-  <testcase name="rest04GetCategoria" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.108"/>
-  <testcase name="rest05DeleteCategoria" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.302"/>
-  <testcase name="rest06DeleteCategoriaNotFound" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.062"/>
-  <testcase name="none" classname="br.com.achimid.lanchonete.api.CategoriaRestControllerTest" time="0.032"/>
-  <system-out><![CDATA[2018-01-25 00:16:29.684  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest], using SpringBootContextLoader
-2018-01-25 00:16:29.685  INFO 18555 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
-2018-01-25 00:16:29.708  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
-2018-01-25 00:16:29.725  INFO 18555 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@45fe48a4, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@7cf5fcf, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@115a522, org.springframework.test.context.support.DirtiesContextTestExecutionListener@71668290, org.springframework.test.context.transaction.TransactionalTestExecutionListener@46ea4f70, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@3b264145, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@1736cfb6, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@5281bdc2, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@4684f92d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@4fa1b4d1, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@6e4b89ec, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@31fb564a]
-2018-01-25 00:16:29.754  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:29.755  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:29.800  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 45 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
-2018-01-25 00:16:30.168  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:30.170  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:30.173  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
-2018-01-25 00:16:30.240  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:30.240  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:30.249  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 7 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: update categoria set descricao=?, nome=?, url_img=? where id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: delete from categoria where id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
-2018-01-25 00:16:30.391  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:30.392  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:30.405  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 13 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
-2018-01-25 00:16:30.483  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:30.483  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:30.488  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 5 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-2018-01-25 00:16:30.534  INFO 18555 --- [    Test worker] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
-Hibernate: select count(*) as col_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: select count(*) as col_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: delete from categoria where id_categoria=?
-2018-01-25 00:16:30.788  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:30.788  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:30.791  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: select count(*) as col_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
-2018-01-25 00:16:30.854  INFO 18555 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
-2018-01-25 00:16:30.855  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
-2018-01-25 00:16:30.858  INFO 18555 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
-Hibernate: insert into categoria (descricao, nome, url_img) values (?, ?, ?)
-Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url_img as url_img4_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
-Hibernate: delete from categoria where id_categoria=?
+  <system-out><![CDATA[12:35:25.278 [Test worker] DEBUG org.springframework.test.context.junit4.SpringJUnit4ClassRunner - SpringJUnit4ClassRunner constructor called with [class br.com.achimid.lanchonete.api.CategoriaRestControllerTest]
+12:35:25.278 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating CacheAwareContextLoaderDelegate from class [org.springframework.test.context.cache.DefaultCacheAwareContextLoaderDelegate]
+12:35:25.278 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating BootstrapContext using constructor [public org.springframework.test.context.support.DefaultBootstrapContext(java.lang.Class,org.springframework.test.context.CacheAwareContextLoaderDelegate)]
+12:35:25.279 [Test worker] DEBUG org.springframework.test.context.BootstrapUtils - Instantiating TestContextBootstrapper for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest] from class [org.springframework.boot.test.context.SpringBootTestContextBootstrapper]
+12:35:25.282 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest], using SpringBootContextLoader
+12:35:25.282 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]: class path resource [br/com/achimid/lanchonete/api/CategoriaRestControllerTest-context.xml] does not exist
+12:35:25.284 [Test worker] DEBUG org.springframework.test.context.support.AbstractContextLoader - Did not detect default resource location for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]: class path resource [br/com/achimid/lanchonete/api/CategoriaRestControllerTestContext.groovy] does not exist
+12:35:25.284 [Test worker] INFO org.springframework.test.context.support.AbstractContextLoader - Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+12:35:25.294 [Test worker] DEBUG org.springframework.test.context.support.ActiveProfilesUtils - Could not find an 'annotation declaring class' for annotation type [org.springframework.test.context.ActiveProfiles] and class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]
+12:35:25.298 [Test worker] DEBUG org.springframework.boot.test.context.SpringBootTestContextBootstrapper - @TestExecutionListeners is not present for class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]: using defaults.
+12:35:25.301 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+12:35:25.303 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper - Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@5c6441fa, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@60b5ce36, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@6ea27d81, org.springframework.test.context.support.DirtiesContextTestExecutionListener@701e19e6, org.springframework.test.context.transaction.TransactionalTestExecutionListener@e0bed8e, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@40815607, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@3d3265e3, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@3d638a8a, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@6c557735, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@262e25d6, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@81d418d, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@290badde]
+12:35:25.304 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]
+12:35:25.304 [Test worker] DEBUG org.springframework.test.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [br.com.achimid.lanchonete.api.CategoriaRestControllerTest]
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
