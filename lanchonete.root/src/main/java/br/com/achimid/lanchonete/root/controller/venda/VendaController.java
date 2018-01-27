@@ -4,6 +4,7 @@ import br.com.achimid.lanchonete.root.base.BaseController;
 import br.com.achimid.lanchonete.root.dto.CategoriaDTO;
 import br.com.achimid.lanchonete.root.dto.ProdutoDTO;
 import br.com.achimid.lanchonete.root.dto.VendaDTO;
+import br.com.achimid.lanchonete.root.dto.VendaItemDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +24,7 @@ public class VendaController extends BaseController{
 
     private static final String PASSO_PRODUTO = "pages/venda/passoProduto";
     private static final String PASSO_OP_PRODUTO = "pages/venda/passoOpcoesProduto";
+    private static final String PASSO_CONFIRMAR = "pages/venda/passoConfirmar";
     private static final String NEW = "pages/venda/new";
     private static final String REDIRECT = "redirect:/venda";
 
@@ -46,6 +48,14 @@ public class VendaController extends BaseController{
                 .addObject("produto", super.findOne("/produto", ProdutoDTO.class, idProduto));
     }
 
+    @PostMapping("/passoConfirmar")
+    public ModelAndView passoConfirmar( @RequestBody List<VendaItemDTO> itens){
+        for(VendaItemDTO vi : itens)
+            vi.setProduto((ProdutoDTO) super.findOne("/produto", ProdutoDTO.class, vi.getProduto().getIdProduto()));
+        return new ModelAndView(PASSO_CONFIRMAR)
+                .addObject("itens", itens);
+    }
+
     private List<ProdutoDTO> produtoByCategoria(Long idCategoria){
         return findAll("/produto?idCategoria=" + idCategoria);
     }
@@ -54,6 +64,11 @@ public class VendaController extends BaseController{
     @ModelAttribute("categorias")
     public List<CategoriaDTO> allCategorias(){
         return findAll("/categoria");
+    }
+
+    @ModelAttribute("mesas")
+    public List<CategoriaDTO> allMesas(){
+        return findAll("/mesa");
     }
 
 }

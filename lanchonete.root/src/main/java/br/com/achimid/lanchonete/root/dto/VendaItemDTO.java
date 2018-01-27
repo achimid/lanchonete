@@ -15,5 +15,6 @@ public class VendaItemDTO extends BaseDTO{
     private ProdutoDTO produto;
     private BigDecimal valor;
     private BigDecimal qtde;
+    private String observacao;
 
 }

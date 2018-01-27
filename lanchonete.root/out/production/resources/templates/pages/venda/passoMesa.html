@@ -17,64 +17,24 @@
             </div><!-- /.box-header -->
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-green">
-                            <input class="idMesa hidden" value="1"/>
-                            <div class="inner">
-                                <h3>Mesa 1</h3>
-                                <p>Livre</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-android-people"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Selecionar <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
+                    <div class="text-center" th:if="${#lists.isEmpty(mesas)}">
+                        <span> Nenhuma mesa encontrado!</span>
                     </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div th:each="mesa : ${mesas}" class="col-md-3 col-sm-6 col-xs-6">
                         <!-- small box -->
-                        <div class="small-box bg-green">
-                            <input class="idMesa hidden" value="2"/>
+                        <div class="small-box" th:classappend="${mesa.status == 'livre'} ? bg-green : bg-red">
+                            <input class="idMesa hidden" th:value="${mesa.idMesa}" th:attr="data-descricao=${mesa.descricao}"/>
                             <div class="inner">
-                                <h3>Mesa 2</h3>
-                                <p>Livre</p>
+                                <h3 th:text="${mesa.descricao}"> Mesa 1</h3>
+                                <p th:text="${mesa.status}" class="cpt">Livre</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-android-people"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Selecionar <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-green">
-                            <input class="idMesa hidden" value="3"/>
-                            <div class="inner">
-                                <h3>Mesa 3</h3>
-                                <p>Livre</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-android-people"></i>
-                            </div>
-                            <a href="#" class="small-box-footer">Selecionar <i class="fa fa-arrow-circle-right"></i></a>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 col-xs-6">
-                        <!-- small box -->
-                        <div class="small-box bg-red">
-                            <input class="idMesa hidden" value="4"/>
-                            <div class="inner">
-                                <h3>Mesa 4</h3>
-                                <p>Ocupada</p>
-                            </div>
-                            <div class="icon">
-                                <i class="ion ion-android-people"></i>
+                                <i class="fa fa-user" aria-hidden="true"></i>
                             </div>
                             <a href="#" class="small-box-footer">Selecionar <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                 </div>
-
             </div>
           </div><!-- /.box-body -->
       </div><!-- /.box -->

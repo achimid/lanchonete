@@ -1,35 +1,58 @@
 $.venda = {
-  adicionarItem: function (idProduto, qtde, observacao) {
-    var _venda
-    if(sessionStorage.venda !== undefined && sessionStorage.venda !== 'undefined') _venda = JSON.parse(sessionStorage.venda);
+    adicionarItem: function (idProduto, qtde, observacao) {
+      var _venda = $.venda.getVenda();
+      var _item = {produto: { idProduto : idProduto}, qtde: qtde, observacao: observacao };
 
-    var _item = {produto: { idProduto : idProduto }, qtde: qtde, observacao: observacao};
-    if(_venda == undefined){
-        _venda = {listaItens : [], idMesa: ''}
-    }
-    _venda.listaItens.push(_item)
-    sessionStorage.venda = JSON.stringify(_venda);
-    return true;
-  },
+      _venda.listaItens.push(_item)
+
+      $.venda.setVenda(_venda);
+      return true;
+    },
+    getVenda: function () {
+        var _venda
+        if(sessionStorage.venda !== undefined && sessionStorage.venda !== 'undefined') _venda = JSON.parse(sessionStorage.venda);
+        if(_venda == undefined){
+            _venda = {listaItens : [], mesa: { idMesa: '', descricao : ''}}
+        }
+
+        return _venda;
+    },
+    setVenda: function (_venda) {
+        sessionStorage.venda = JSON.stringify(_venda);
+    },
   hasItem: function () {
-      var _venda
-      if(sessionStorage.venda !== undefined && sessionStorage.venda !== 'undefined') _venda = JSON.parse(sessionStorage.venda);
-
+      var _venda = $.venda.getVenda();
       if(_venda === undefined) return false;
       if(_venda.listaItens === undefined) return false;
       if(_venda.listaItens.length === 0) return false;
 
       return true;
   },
-  selecionaMesa: function (idMesa) {
-      var _venda
-      if(sessionStorage.venda !== undefined && sessionStorage.venda !== 'undefined') _venda = JSON.parse(sessionStorage.venda);
+  selecionaMesa: function (idMesa, descricao) {
+        var _venda = $.venda.getVenda();
 
-      if(_venda == undefined){
-          _venda = {listaItens : [], idMesa: ''}
-      }
-      _venda.idMesa = idMesa
-      sessionStorage.venda = JSON.stringify(_venda);
+        _venda.mesa.idMesa = idMesa
+        _venda.mesa.descricao = descricao
+
+        $.venda.setVenda(_venda);
+  },
+  hasMesa: function () {
+        var _venda = $.venda.getVenda();
+        return _venda.mesa.idMesa !== '';
+    },
+  getMesa: function () {
+      var _venda = $.venda.getVenda();
+      return _venda.mesa;
+  },
+  removeItem: function (index) {
+    var _venda = $.venda.getVenda();
+
+    if(_venda.listaItens.length === 0) return false;
+
+    _venda.listaItens.splice(index);
+
+    $.venda.setVenda(_venda);
+    return true;
   },
   cleanVenda: function () {
       sessionStorage.venda = undefined;
@@ -49,29 +72,45 @@ function selecionaProduto(){
 function selecionaMesa(){
     $('.small-box').removeClass('selected');
     $(this).addClass('selected');
-    $.venda.selecionaMesa($('.small-box.selected > .idMesa').val());
+    $.venda.selecionaMesa($('.small-box.selected > .idMesa').val(), $('.small-box.selected > .idMesa').data('descricao'));
     $('.btn-collapse-mesa').click();
 }
 
+function passoConfirmar(){
+    $.ajax({
+      type: "POST",
+      url: "/venda/passoConfirmar",
+      contentType: "application/json",
+      data: JSON.stringify($.venda.getVenda().listaItens) ,
+      success: function(data){
+        $('#passoConfirmar').html(data)
+      }
+    });
+
+}
+
 function btnConcluir(){
+    passoConfirmar();
     $('#passoMesa').addClass('hidden');
     $('#passoCategoria').addClass('hidden');
     $('#passoProduto').html('');
     $('#passoOpcoesProduto').html('');
     $('#passoConfirmar').removeClass('hidden');
     $('button[name="btnConcluir"]').addClass('hidden');
-}
-
-function renderPageConfirmar(){
-    $('#passoConfirmar').removeClass('hidden');
-
+    consolidaBtnFinalizar();
 }
 
 function btnFinalizar(){
 
 
     // no final da reaload e limpa a venda
-    location.reload();
+    consolidaBtnFinalizar();
+
+    alertify.success('Pedido enviado!!');
+    setTimeout(function(){
+        location.reload();
+    },1000)
+
 }
 
 function btnVoltar(){
@@ -80,11 +119,17 @@ function btnVoltar(){
     $('#passoProduto').removeClass('hidden');
     $('#passoOpcoesProduto').removeClass('hidden');
     $('#passoConfirmar').addClass('hidden');
-    $('button[name="btnConcluir"]').removeClass('hidden');
+    consolidaBtnFinalizar();
 }
 
 function removerItem(){
-
+    var index = $(this).data('item-index');
+    if($.venda.removeItem(index)){
+        alertify.success('Item removido com sucesso!');
+    }else{
+        alertify.error('Ocorreu um erro ao remover o item!');
+    }
+    $(this).parent().parent().remove();
 }
 
 function init_passoProduto(){
@@ -110,13 +155,13 @@ function remove_qtde_icon(){
 
 function adicionarItem(){
     var qtde = parseInt($('input[name="item.qtde"]').val());
-    var idProduto = $('input[name="produto.idProduto"]');
-    var observacao = $('textarea[name="item.observacao"]');
+    var idProduto = $('input[name="produto.idProduto"]').val();
+    var observacao = $('textarea[name="item.observacao"]').val();
 
     if($.venda.adicionarItem(idProduto, qtde, observacao)){
         novoItem();
     }else{
-        alert('Ocorreu um erro ao adicionar o item!');
+        alertify.warning('Ocorreu um erro ao adicionar o item!')
     }
 }
 
@@ -127,12 +172,32 @@ function novoItem(){
     consolidaBtnConluir();
 }
 
+function consolidaBtnFinalizar(){
+    if($("#passoConfirmar").is(":visible")){
+        $('button[name="btnVoltar"]').removeClass('hidden');
+        $('button[name="btnFinalizar"]').removeClass('hidden');
+        $('button[name="btnConcluir"]').addClass('hidden');
+    }else{
+        $('button[name="btnVoltar"]').addClass('hidden');
+        $('button[name="btnFinalizar"]').addClass('hidden');
+        $('button[name="btnConcluir"]').removeClass('hidden');
+    }
+}
+
 function consolidaBtnConluir(){
+
     if($.venda.hasItem()){
         $('button[name="btnConcluir"]').removeClass('hidden');
     }else{
         $('button[name="btnConcluir"]').addClass('hidden');
     }
+    if($.venda.hasMesa()){
+        $('.lb-origem').text('Origem: ' + $.venda.getMesa().descricao);
+    }else{
+        $('.lb-origem').text('Origem: Balcão');
+    }
+
+    //consolidaBtnFinalizar();
 }
 
 // DOCUMENT READY SEMPRE NO FINAL

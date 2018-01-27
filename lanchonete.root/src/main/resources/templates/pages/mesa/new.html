@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="pages/layout/defaultLayout">
+  <head>
+    <title>Mesa</title>
+  </head>
+  <body >
+      <section layout:fragment="body">
+        <section class="content-header">
+          <h1>
+            Mesa
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Cadastros</a></li>
+            <li class="active">Mesas</li>
+          </ol>
+        </section>
+
+        <section class="content">
+          <div class="container-fluid">
+            <!-- Mensages -->
+            <block th:replace="pages/layout/imports/formMensageImport :: formMensageImport"></block>
+
+            <div th:if="${mesa.errors}" class="alert alert-danger" role="alert">
+              <ul>
+                <li th:each="error : ${mesa.errors}" th:text="${error}"></li>
+              </ul>
+            </div>
+
+            <!-- Form -->
+            <form th:action="@{/mesa/new}" method="POST" th:object="${mesa}">
+                <div class="form-group col-md-1 hidden">
+                    <label class="label-control"> Id:</label>
+                    <input class="form-control" th:field="*{idMesa}"/>
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="label-control"> Descrição:</label>
+                    <input class="form-control" type="text" th:field="*{descricao}" required="true" />
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label class="label-control"> Status:</label>
+                    <input class="form-control" type="text" th:field="*{status}" readonly="true" />
+                </div>
+
+                <div class="col-md-12">
+                    <div class="text-right">
+                        <a th:href="@{/mesa}" class="btn btn-default pull-left">Voltar</a>
+                        <a th:if="not ${#strings.isEmpty(mesa.idMesa)}"
+                           th:href="@{/mesa/delete/{id}(id=${mesa.idMesa})}" class="btn btn-danger js-delete">Excluir</a>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                    </div>
+                </div>
+
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <section layout:fragment="javascript-extra">
+
+      </section>
+
+  </body>
+</html>

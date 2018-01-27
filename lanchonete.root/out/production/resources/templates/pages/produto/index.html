@@ -33,7 +33,8 @@
                   <thead>
                     <tr>
                       <th>ID</th>
-                      <th>Nome</th>
+                      <th class="col-xs-3">Nome</th>
+                      <th class="col-xs-2">Categoria</th>
                       <th>Descricao</th>
                       <th class="col-action-table">Ações</th>
                     </tr>
@@ -42,6 +43,7 @@
                     <tr th:each="p : ${produtos}">
                       <td th:text="${p.idProduto}">183</td>
                       <td th:text="${p.nome}">Pizza</td>
+                      <td th:text="${p.categoria.descricao}">Saladas</td>
                       <td th:text="${p.descricao}">Made o cheese</td>
                       <td class="col-action-table">
                         <a class="btn btn-success" th:href="@{produto/{id}(id=${p.idProduto})}" title="Editar">

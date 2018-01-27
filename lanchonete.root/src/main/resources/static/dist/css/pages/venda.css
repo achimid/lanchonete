@@ -47,3 +47,24 @@
 .label-lg{
     font-size: 14px;
 }
+
+.cpt{
+    text-transform: capitalize;
+}
+
+.btn-add-qtde,
+.btn-remove-qtde{
+    font-size: 18px;
+}
+
+.btn-add-qtde{
+    color: green;
+}
+
+.btn-remove-qtde{
+    color: red;
+}
+
+.small-box h3 {
+    font-size: 29px;
+}

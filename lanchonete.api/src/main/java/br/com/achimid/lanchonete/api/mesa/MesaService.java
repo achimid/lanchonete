@@ -1,5 +1,7 @@
 package br.com.achimid.lanchonete.api.mesa;
 
+import br.com.achimid.lanchonete.api.compra.vendaMesa.VendaMesa;
+import br.com.achimid.lanchonete.api.compra.vendaMesa.VendaMesaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +13,18 @@ public class MesaService {
     @Autowired
     private MesaRepository mesaRepository;
 
+    @Autowired
+    private VendaMesaRepository vendaMesaRepository;
+
     public List<Mesa> findAll(){
         List<Mesa> mesas = (List<Mesa>) mesaRepository.findAll();
+        mesas.forEach(m -> {
+            m.setStatus(MesaStatus.LIVRE.name().toLowerCase());
+            VendaMesa last = vendaMesaRepository.findTop1ByMesaIdMesaOrderByIdVendaMesaDesc(m.getIdMesa());
+            if(last != null)
+                m.setStatus(last.getStatus().name().toLowerCase());
+        });
+
         // alguma maneira de buscar os status da mesa;
         return mesas;
     }
