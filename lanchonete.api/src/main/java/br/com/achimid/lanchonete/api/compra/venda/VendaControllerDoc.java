@@ -2,6 +2,7 @@ package br.com.achimid.lanchonete.api.compra.venda;
 
 import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
+import br.com.achimid.lanchonete.api.mesa.Mesa;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +18,7 @@ public interface VendaControllerDoc {
     @ApiOperation("Busca venda por id")
     public HttpEntity<Venda> getVenda(@PathVariable Long id);
 
-    @ApiOperation("Metodo para finalizar venda. Informando os itens da venda e lista de pagamentos.")
-    public HttpEntity<Venda> checkouVenda(@RequestBody Venda venda);
+    @ApiOperation("Metodo para finalizar venda. Informando a Venda e ou a Mesa")
+    public HttpEntity<Venda> checkouVenda(@RequestBody Venda venda, @RequestBody Mesa mesa);
 
 }

@@ -38,7 +38,7 @@ public class Venda extends EntidadeBase{
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVendaItem")
     private List<VendaItem> listaItens;
 
-    @NotNull(message = "A venda deve ter ao menos um pagamento.")
+    //@NotNull(message = "A venda deve ter ao menos um pagamento.")
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "idVendaPagamento")
     private List<VendaPagamento> pagamentos;
 

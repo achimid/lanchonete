@@ -64,7 +64,7 @@ public class BaseController<T extends BaseDTO>{
         return true;
     }
 
-    private void preparaErro(Exception e, T obj){
+    protected void preparaErro(Exception e, T obj){
         Gson gson = new Gson();
         Map map = gson.fromJson(e.getMessage(), Map.class);
         List<Map> errors = (List<Map>) map.get("errors");
@@ -73,7 +73,7 @@ public class BaseController<T extends BaseDTO>{
                     .collect(Collectors.toList()));
     }
 
-    private void preparaErro(HttpClientErrorException e, T obj){
+    protected void preparaErro(HttpClientErrorException e, T obj){
         Gson gson = new Gson();
         Map map = gson.fromJson(e.getResponseBodyAsString(), Map.class);
         List<Map> errors = (List<Map>) map.get("errors");

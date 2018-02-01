@@ -1,18 +1,24 @@
 package br.com.achimid.lanchonete.root.controller.venda;
 
 import br.com.achimid.lanchonete.root.base.BaseController;
-import br.com.achimid.lanchonete.root.dto.CategoriaDTO;
-import br.com.achimid.lanchonete.root.dto.ProdutoDTO;
-import br.com.achimid.lanchonete.root.dto.VendaDTO;
-import br.com.achimid.lanchonete.root.dto.VendaItemDTO;
+import br.com.achimid.lanchonete.root.dto.*;
+import com.google.gson.Gson;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Controller
@@ -33,6 +39,25 @@ public class VendaController extends BaseController{
         return new ModelAndView(NEW)
                 .addObject("venda", new VendaDTO())
                 .addObject("categorias");
+    }
+
+    @PostMapping
+    public HttpEntity<VendaDTO> checkoutVenda(
+            @RequestBody(required = false) VendaDTO venda, @RequestBody(required = false) MesaDTO mesa){
+
+        RestTemplate restTemplate = new RestTemplate();
+        MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
+        map.add("venda", venda);
+        map.add("mesa", mesa);
+
+        ResponseEntity<VendaDTO> response = null;
+        try {
+            response = restTemplate.postForEntity(URL_API, map, VendaDTO.class);
+            return ResponseEntity.ok(response.getBody());
+        }catch (HttpClientErrorException e){
+            super.preparaErro(e, venda);
+            return new ResponseEntity<>(venda, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/passoProduto/{idCategoria}")

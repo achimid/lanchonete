@@ -6,6 +6,8 @@ import br.com.achimid.lanchonete.api.categoria.CategoriaRepository;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
 import br.com.achimid.lanchonete.api.formaPagamento.FormaPagamento;
 import br.com.achimid.lanchonete.api.formaPagamento.FormaPagamentoRepository;
+import br.com.achimid.lanchonete.api.mesa.Mesa;
+import br.com.achimid.lanchonete.api.mesa.MesaRepository;
 import br.com.achimid.lanchonete.api.produto.Produto;
 import br.com.achimid.lanchonete.api.produto.ProdutoRepository;
 import br.com.achimid.lanchonete.api.compra.venda.Venda;
@@ -43,6 +45,9 @@ public class VendaRestControllerTest extends TestBase {
 
     @Autowired
     private FormaPagamentoRepository formaPagamentoRepository;
+
+    @Autowired
+    private MesaRepository mesaRepository;
 
     @Autowired
     private VendaService vendaService;
@@ -108,8 +113,17 @@ public class VendaRestControllerTest extends TestBase {
     @Before
     public void setup() throws Exception {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
+        Venda v = new Venda();
+        v.setPagamentos(getNewVendaPagamento());
+        v.setListaItens(getNewListVendaItem());
 
-        this.vendas.add(this.vendaService.checkouVenda(getNewListVendaItem(), getNewVendaPagamento()));
+        this.vendas.add(this.vendaService.checkouVenda(v, null));
+
+        Mesa mesa = new Mesa();
+        mesa.setDescricao("Mesa 007-");
+        mesaRepository.save(mesa);
+
+        this.vendas.add(this.vendaService.checkouVenda(v, mesa));
     }
 
     @Test

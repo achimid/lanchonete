@@ -20,13 +20,13 @@
             <div class="container-fluid">
                 <div class="line col-xs-12" th:each="item, itemIndex : ${itens}">
                     <div class="col-xs-1">
-                        <a class="pull-left btnRemoverItem" href="javascript:void();" th:attr="data-item-index=${itemIndex.index}">
-                            <i class="fa fa-times" aria-hidden="true"></i>
+                        <a class="pull-left btnRemoverItem" href="javascript:void(0);" th:attr="data-item-index=${itemIndex.index}">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </div>
                     <div class="col-xs-10">
                         <label th:text="${item.qtde + 'x'}" >2x </label>
-                        <label th:text="${item.produto.nome}" class="padding-left-8">Suco de Uva</label>
+                        <label th:text="${item.produto.nome}" class="padding-left-8 js-produto-nome">Suco de Uva</label>
                         <span class="hidden">
                             (Com gelo e limão)
                         </span>

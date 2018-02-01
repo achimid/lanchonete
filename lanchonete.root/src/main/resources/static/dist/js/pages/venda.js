@@ -70,10 +70,14 @@ function selecionaProduto(){
 }
 
 function selecionaMesa(){
-    $('.small-box').removeClass('selected');
-    $(this).addClass('selected');
-    $.venda.selecionaMesa($('.small-box.selected > .idMesa').val(), $('.small-box.selected > .idMesa').data('descricao'));
-    $('.btn-collapse-mesa').click();
+    if($(this).hasClass('selected')){
+        $(this).removeClass('selected');
+    }else{
+        $('.small-box').removeClass('selected');
+        $(this).addClass('selected');
+        $.venda.selecionaMesa($('.small-box.selected > .idMesa').val(), $('.small-box.selected > .idMesa').data('descricao'));
+        $('.btn-collapse-mesa').click();
+    }
 }
 
 function passoConfirmar(){
@@ -83,10 +87,14 @@ function passoConfirmar(){
       contentType: "application/json",
       data: JSON.stringify($.venda.getVenda().listaItens) ,
       success: function(data){
-        $('#passoConfirmar').html(data)
+        $('#passoConfirmar').html(data);
+        if($.venda.hasMesa()){
+            $('.lb-origem').text('Origem: ' + $.venda.getMesa().descricao);
+        }else{
+            $('.lb-origem').text('Origem: Balcão');
+        }
       }
     });
-
 }
 
 function btnConcluir(){
@@ -97,20 +105,34 @@ function btnConcluir(){
     $('#passoOpcoesProduto').html('');
     $('#passoConfirmar').removeClass('hidden');
     $('button[name="btnConcluir"]').addClass('hidden');
+    $('.checkout__close').click();
     consolidaBtnFinalizar();
 }
 
 function btnFinalizar(){
+    if(!$.venda.hasItem()){
+        alertify.error('Nenhum item selecionado!');
+        return;
+    }
 
+    var _venda = {
+        'venda' : { 'listaItens' : $.venda.getVenda().listaItens}
+    }
 
-    // no final da reaload e limpa a venda
-    consolidaBtnFinalizar();
-
-    alertify.success('Pedido enviado!!');
-    setTimeout(function(){
-        location.reload();
-    },1000)
-
+    $.ajax({
+      type: "POST",
+      url: "/venda",
+      contentType: "application/json",
+      data: JSON.stringify(_venda) ,
+      success: function(data){
+            consolidaBtnFinalizar();
+            alertify.success('Pedido enviado!!');
+            setTimeout(function(){
+                // no final da reaload e limpa a venda
+                location.reload();
+            },700)
+      }
+    });
 }
 
 function btnVoltar(){
@@ -125,11 +147,16 @@ function btnVoltar(){
 function removerItem(){
     var index = $(this).data('item-index');
     if($.venda.removeItem(index)){
+        $(this).parent().parent().remove();
+        removeLinhaTableCheckout(index);
         alertify.success('Item removido com sucesso!');
     }else{
         alertify.error('Ocorreu um erro ao remover o item!');
     }
-    $(this).parent().parent().remove();
+
+    if(!$.venda.hasItem()){
+        btnVoltar(); // removeu todos os items, sai da tela de finalização.
+    }
 }
 
 function init_passoProduto(){
@@ -157,12 +184,27 @@ function adicionarItem(){
     var qtde = parseInt($('input[name="item.qtde"]').val());
     var idProduto = $('input[name="produto.idProduto"]').val();
     var observacao = $('textarea[name="item.observacao"]').val();
+    var nome = $('.js-produto-nome').text();
 
     if($.venda.adicionarItem(idProduto, qtde, observacao)){
+        addLinhaTableCheckout(nome, qtde, observacao);
         novoItem();
+        alertify.success('Item adicionado!')
     }else{
         alertify.warning('Ocorreu um erro ao adicionar o item!')
     }
+}
+
+function addLinhaTableCheckout(nome, qtde, observacao){
+    var linha = '<tr>' +
+                     '<td>' + nome + '<span> | ' + observacao + '</span></td>' +
+                     '<td>' + qtde + '</td>' +
+                 '</tr>';
+    $('.js-tb-itens tr:last').after(linha);
+}
+
+function removeLinhaTableCheckout(index){
+     $('.js-tb-itens tr').get(index + 1).remove();
 }
 
 function novoItem(){
@@ -173,31 +215,29 @@ function novoItem(){
 }
 
 function consolidaBtnFinalizar(){
-    if($("#passoConfirmar").is(":visible")){
-        $('button[name="btnVoltar"]').removeClass('hidden');
-        $('button[name="btnFinalizar"]').removeClass('hidden');
-        $('button[name="btnConcluir"]').addClass('hidden');
+    if($.venda.hasItem()){
+        if($('#passoConfirmar').is(':visible')){
+            $('button[name="btnVoltar"]').removeClass('hidden');
+            $('button[name="btnFinalizar"]').removeClass('hidden');
+            $('button[name="btnConcluir"]').addClass('hidden');
+        }else{
+            $('button[name="btnVoltar"]').addClass('hidden');
+            $('button[name="btnFinalizar"]').addClass('hidden');
+            $('button[name="btnConcluir"]').removeClass('hidden');
+        }
     }else{
         $('button[name="btnVoltar"]').addClass('hidden');
         $('button[name="btnFinalizar"]').addClass('hidden');
-        $('button[name="btnConcluir"]').removeClass('hidden');
+        $('button[name="btnConcluir"]').addClass('hidden');
     }
 }
 
 function consolidaBtnConluir(){
-
     if($.venda.hasItem()){
         $('button[name="btnConcluir"]').removeClass('hidden');
     }else{
         $('button[name="btnConcluir"]').addClass('hidden');
     }
-    if($.venda.hasMesa()){
-        $('.lb-origem').text('Origem: ' + $.venda.getMesa().descricao);
-    }else{
-        $('.lb-origem').text('Origem: Balcão');
-    }
-
-    //consolidaBtnFinalizar();
 }
 
 // DOCUMENT READY SEMPRE NO FINAL
@@ -212,9 +252,36 @@ $(document).ready(function(){
     $(document).on('click', 'button[name="btnAdicionarItem"]', adicionarItem);
     $(document).on('click', '.small-box', selecionaMesa);
     $(document).on('click', 'button[name="btnVoltar"]', btnVoltar);
+    $(document).on('click', 'button[name="btnVoltar2"]', btnVoltar);
     $(document).on('click', 'button[name="btnFinalizar"]', btnFinalizar);
     $(document).on('click', 'button[name="btnConcluir"]', btnConcluir);
     $(document).on('click', '.btnRemoverItem', removerItem);
 
+    loadCheckout()
 });
 
+
+function loadCheckout(){
+
+    $('.divCheckout').html($('#divCheckout').html());
+    $('#divCheckout').remove();
+    $('.divCheckout').removeClass('hidden');
+
+    [].slice.call( document.querySelectorAll( '.checkout' ) ).forEach( function( el ) {
+        var openCtrl = el.querySelector( '.checkout__button' ),
+            closeCtrls = el.querySelectorAll( '.checkout__cancel' );
+
+        openCtrl.addEventListener( 'click', function(ev) {
+            ev.preventDefault();
+            classie.add( el, 'checkout--active' );
+            $('.checkout__order').css('width', '400px')
+        } );
+
+        [].slice.call( closeCtrls ).forEach( function( ctrl ) {
+            ctrl.addEventListener( 'click', function() {
+                classie.remove( el, 'checkout--active' );
+                $('.checkout__order').css('width', '0px')
+            } );
+        } );
+    } );
+}

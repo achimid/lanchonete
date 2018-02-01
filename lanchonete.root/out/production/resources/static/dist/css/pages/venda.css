@@ -68,3 +68,15 @@
 .small-box h3 {
     font-size: 29px;
 }
+
+.main-footer{
+    height: calc(3em + 30px) !important;
+}
+
+.info-box-text{
+    padding-left: 20px !important;
+}
+
+.divCheckout{
+    width: 4em;
+}

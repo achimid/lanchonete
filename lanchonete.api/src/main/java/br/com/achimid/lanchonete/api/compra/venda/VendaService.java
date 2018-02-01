@@ -2,8 +2,12 @@ package br.com.achimid.lanchonete.api.compra.venda;
 
 import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
 import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItemRepository;
+import br.com.achimid.lanchonete.api.compra.vendaMesa.VendaMesa;
+import br.com.achimid.lanchonete.api.compra.vendaMesa.VendaMesaRepository;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamentoRepository;
+import br.com.achimid.lanchonete.api.mesa.Mesa;
+import br.com.achimid.lanchonete.api.mesa.MesaStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +28,9 @@ public class VendaService {
     @Autowired
     private VendaPagamentoRepository vendaPagamentoRepository;
 
+    @Autowired
+    private VendaMesaRepository vendaMesaRepository;
+
     public List<Venda> findAll(){
         return (List<Venda>) vendaRepository.findAll();
     }
@@ -33,22 +40,44 @@ public class VendaService {
     }
 
     @Transactional
-    public Venda
-    checkouVenda(List<VendaItem> listaItens, List<VendaPagamento> pagamentos){
-        Venda venda = new Venda();
+    public Venda checkouVenda(Venda venda, Mesa mesa){
+        if(venda == null){
+            throw new IllegalArgumentException("Venda não pode ser nulla");
+        }if(venda.getListaItens() == null || venda.getListaItens().isEmpty()){
+            throw new IllegalArgumentException("A venda deve ter ao menu um item");
+        }
+
         venda.setDataVenda(GregorianCalendar.getInstance().getTime());
-        venda.setListaItens(listaItens);
-        venda.setPagamentos(pagamentos);
-
-        venda.getPagamentos().forEach(pagamento -> pagamento.setVenda(venda));
-        venda.getListaItens().forEach(item -> item.setVenda(venda));
-
         this.calculaValorFinal(venda);
-        this.consolidaFormasPagamentos(venda);
 
-        vendaRepository.save(venda);
-        vendaPagamentoRepository.save(venda.getPagamentos());
-        vendaItemRepository.save(venda.getListaItens());
+        if(mesa == null || mesa.getIdMesa() == null){
+            //Venda sem Mesa
+
+            if(venda.getPagamentos() == null || venda.getPagamentos().isEmpty()){
+                throw new IllegalArgumentException("O pagamento não pode ser null");
+            }
+
+            venda.getPagamentos().forEach(pagamento -> pagamento.setVenda(venda));
+            venda.getListaItens().forEach(item -> item.setVenda(venda));
+
+            this.consolidaFormasPagamentos(venda);
+
+            vendaRepository.save(venda);
+            vendaPagamentoRepository.save(venda.getPagamentos());
+            vendaItemRepository.save(venda.getListaItens());
+
+
+        }else{
+            // Venda de Mesa
+            VendaMesa vm = new VendaMesa();
+            vm.setMesa(mesa);
+            vm.setVenda(venda);
+            vm.setStatus(MesaStatus.OCUPADO);
+
+            vendaRepository.save(venda);
+            vendaItemRepository.save(venda.getListaItens());
+            vendaMesaRepository.save(vm);
+        }
 
         return venda;
     }

@@ -3,6 +3,7 @@ package br.com.achimid.lanchonete.api.compra.venda;
 import br.com.achimid.lanchonete.api.categoria.Categoria;
 import br.com.achimid.lanchonete.api.compra.vendaItem.VendaItem;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
+import br.com.achimid.lanchonete.api.mesa.Mesa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +32,9 @@ public class VendaController implements VendaControllerDoc {
     }
 
     @PostMapping
-    public HttpEntity<Venda> checkouVenda(@RequestBody Venda venda){
+    public HttpEntity<Venda> checkouVenda(@RequestBody Venda venda, @RequestBody Mesa mesa){
         validarVenda(venda);
-        venda = vendaService.checkouVenda(venda.getListaItens(), venda.getPagamentos());
+        venda = vendaService.checkouVenda(venda, mesa);
         return ResponseEntity.ok(venda);
     }
 
