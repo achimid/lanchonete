@@ -34,4 +34,6 @@ public class FormaPagamento extends EntidadeBase{
 
     private Boolean ativo;
 
+    private String urlImg;
+
 }

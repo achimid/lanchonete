@@ -2,24 +2,18 @@ package br.com.achimid.lanchonete.root.controller.venda;
 
 import br.com.achimid.lanchonete.root.base.BaseController;
 import br.com.achimid.lanchonete.root.dto.*;
-import com.google.gson.Gson;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/venda")
@@ -42,21 +36,23 @@ public class VendaController extends BaseController{
     }
 
     @PostMapping
-    public HttpEntity<VendaDTO> checkoutVenda(
-            @RequestBody(required = false) VendaDTO venda, @RequestBody(required = false) MesaDTO mesa){
-
+    public HttpEntity<VendaDTO> checkoutVenda(@RequestBody VendaMesaDTO vendaMesa){
         RestTemplate restTemplate = new RestTemplate();
-        MultiValueMap<String, Object> map = new LinkedMultiValueMap<>();
-        map.add("venda", venda);
-        map.add("mesa", mesa);
-
         ResponseEntity<VendaDTO> response = null;
         try {
-            response = restTemplate.postForEntity(URL_API, map, VendaDTO.class);
+            if(vendaMesa.getMesa() == null || vendaMesa.getMesa().getIdMesa() == null){
+                response = restTemplate.postForEntity(URL_API + "/venda", vendaMesa.getVenda(), VendaDTO.class);
+            }else{
+                response = restTemplate.postForEntity(URL_API + "/venda/checkoutVendaMesa", vendaMesa, VendaDTO.class);
+            }
             return ResponseEntity.ok(response.getBody());
         }catch (HttpClientErrorException e){
+            VendaDTO venda = response.getBody();
             super.preparaErro(e, venda);
-            return new ResponseEntity<>(venda, HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<VendaDTO>(venda, HttpStatus.INTERNAL_SERVER_ERROR);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
         }
     }
 
@@ -75,10 +71,26 @@ public class VendaController extends BaseController{
 
     @PostMapping("/passoConfirmar")
     public ModelAndView passoConfirmar( @RequestBody List<VendaItemDTO> itens){
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<VendaDTO> response = null;
+        VendaDTO venda = new VendaDTO();
+        venda.setListaItens(itens);
+        try {
+            response = restTemplate.postForEntity(URL_API + "/venda/consolidaVenda", venda, VendaDTO.class);
+            venda = response.getBody();
+        }catch (HttpClientErrorException e){
+            venda = response.getBody();
+            super.preparaErro(e, venda);
+        }catch (Exception ex){
+            ex.printStackTrace();
+            throw ex;
+        }
+
         for(VendaItemDTO vi : itens)
             vi.setProduto((ProdutoDTO) super.findOne("/produto", ProdutoDTO.class, vi.getProduto().getIdProduto()));
         return new ModelAndView(PASSO_CONFIRMAR)
-                .addObject("itens", itens);
+                .addObject("itens", venda.getListaItens())
+                .addObject("venda", venda);
     }
 
     private List<ProdutoDTO> produtoByCategoria(Long idCategoria){
@@ -95,5 +107,8 @@ public class VendaController extends BaseController{
     public List<CategoriaDTO> allMesas(){
         return findAll("/mesa");
     }
+
+    @ModelAttribute("formasPagamento")
+    public List<CategoriaDTO> allFormasPagamento(){ return findAll("/formaPagamento"); }
 
 }

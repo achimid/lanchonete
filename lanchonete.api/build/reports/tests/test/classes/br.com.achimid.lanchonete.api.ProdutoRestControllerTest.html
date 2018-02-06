@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - Class br.com.achimid.lanchonete.api.ProdutoRestControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>Class br.com.achimid.lanchonete.api.ProdutoRestControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/br.com.achimid.lanchonete.api.html">br.com.achimid.lanchonete.api</a> &gt; ProdutoRestControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">7</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">0.788s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="tabs">
+<ul class="tabLinks">
+<li>
+<a href="#tab0">Tests</a>
+</li>
+<li>
+<a href="#tab1">Standard output</a>
+</li>
+</ul>
+<div id="tab0" class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">none</td>
+<td>0.037s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest01GetAllProdutos</td>
+<td>0.084s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest02PostProduto</td>
+<td>0.060s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest03PutProduto</td>
+<td>0.072s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest04GetProduto</td>
+<td>0.040s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest05DeleteProduto</td>
+<td>0.454s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">rest06DeleteProdutoNotFound</td>
+<td>0.041s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div id="tab1" class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>2018-02-04 12:02:27.501  INFO 2056 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Neither @ContextConfiguration nor @ContextHierarchy found for test class [br.com.achimid.lanchonete.api.ProdutoRestControllerTest], using SpringBootContextLoader
+2018-02-04 12:02:27.502  INFO 2056 --- [    Test worker] o.s.t.c.support.AbstractContextLoader    : Could not detect default resource locations for test class [br.com.achimid.lanchonete.api.ProdutoRestControllerTest]: no resource found for suffixes {-context.xml, Context.groovy}.
+2018-02-04 12:02:27.508  INFO 2056 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Loaded default TestExecutionListener class names from location [META-INF/spring.factories]: [org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener, org.springframework.test.context.web.ServletTestExecutionListener, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener, org.springframework.test.context.support.DependencyInjectionTestExecutionListener, org.springframework.test.context.support.DirtiesContextTestExecutionListener, org.springframework.test.context.transaction.TransactionalTestExecutionListener, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener]
+2018-02-04 12:02:27.511  INFO 2056 --- [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Using TestExecutionListeners: [org.springframework.test.context.web.ServletTestExecutionListener@35022666, org.springframework.test.context.support.DirtiesContextBeforeModesTestExecutionListener@f016970, org.springframework.boot.test.autoconfigure.SpringBootDependencyInjectionTestExecutionListener@369d2c40, org.springframework.test.context.support.DirtiesContextTestExecutionListener@5f9eb613, org.springframework.test.context.transaction.TransactionalTestExecutionListener@7b8b9a90, org.springframework.test.context.jdbc.SqlScriptsTestExecutionListener@7fc53678, org.springframework.boot.test.autoconfigure.web.servlet.WebDriverTestExecutionListener@20e5eaec, org.springframework.boot.test.autoconfigure.restdocs.RestDocsTestExecutionListener@a61fecd, org.springframework.boot.test.mock.mockito.MockitoTestExecutionListener@2d19ba0b, org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerResetTestExecutionListener@7b393f26, org.springframework.boot.test.autoconfigure.web.servlet.MockMvcPrintOnlyOnFailureTestExecutionListener@74040827, org.springframework.boot.test.mock.mockito.ResetMocksTestExecutionListener@719617fc]
+2018-02-04 12:02:27.522  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:27.522  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:27.525  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_3_, produto0_.categoria_id_categoria as categori8_3_, produto0_.descricao as descrica2_3_, produto0_.nome as nome3_3_, produto0_.url as url4_3_, produto0_.url_img as url_img5_3_, produto0_.valor_custo as valor_cu6_3_, produto0_.valor_venda as valor_ve7_3_ from produto produto0_
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+2018-02-04 12:02:27.607  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:27.608  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:27.611  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+2018-02-04 12:02:27.675  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:27.677  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:27.682  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_3_0_, produto0_.categoria_id_categoria as categori8_3_0_, produto0_.descricao as descrica2_3_0_, produto0_.nome as nome3_3_0_, produto0_.url as url4_3_0_, produto0_.url_img as url_img5_3_0_, produto0_.valor_custo as valor_cu6_3_0_, produto0_.valor_venda as valor_ve7_3_0_ from produto produto0_ where produto0_.id_produto=?
+Hibernate: select categoria0_.id_categoria as id_categ1_0_0_, categoria0_.descricao as descrica2_0_0_, categoria0_.nome as nome3_0_0_, categoria0_.url as url4_0_0_, categoria0_.url_img as url_img5_0_0_ from categoria categoria0_ where categoria0_.id_categoria=?
+Hibernate: update produto set categoria_id_categoria=?, descricao=?, nome=?, url=?, url_img=?, valor_custo=?, valor_venda=? where id_produto=?
+2018-02-04 12:02:27.745  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:27.745  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:27.749  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_3_0_, produto0_.categoria_id_categoria as categori8_3_0_, produto0_.descricao as descrica2_3_0_, produto0_.nome as nome3_3_0_, produto0_.url as url4_3_0_, produto0_.url_img as url_img5_3_0_, produto0_.valor_custo as valor_cu6_3_0_, produto0_.valor_venda as valor_ve7_3_0_, categoria1_.id_categoria as id_categ1_0_1_, categoria1_.descricao as descrica2_0_1_, categoria1_.nome as nome3_0_1_, categoria1_.url as url4_0_1_, categoria1_.url_img as url_img5_0_1_ from produto produto0_ inner join categoria categoria1_ on produto0_.categoria_id_categoria=categoria1_.id_categoria where produto0_.id_produto=?
+2018-02-04 12:02:27.786  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:27.786  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:27.790  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_3_0_, produto0_.categoria_id_categoria as categori8_3_0_, produto0_.descricao as descrica2_3_0_, produto0_.nome as nome3_3_0_, produto0_.url as url4_3_0_, produto0_.url_img as url_img5_3_0_, produto0_.valor_custo as valor_cu6_3_0_, produto0_.valor_venda as valor_ve7_3_0_, categoria1_.id_categoria as id_categ1_0_1_, categoria1_.descricao as descrica2_0_1_, categoria1_.nome as nome3_0_1_, categoria1_.url as url4_0_1_, categoria1_.url_img as url_img5_0_1_ from produto produto0_ inner join categoria categoria1_ on produto0_.categoria_id_categoria=categoria1_.id_categoria where produto0_.id_produto=?
+Hibernate: select count(*) as col_0_0_ from produto produto0_ where produto0_.id_produto=?
+Hibernate: delete from produto where id_produto=?
+2018-02-04 12:02:28.241  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:28.241  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:28.245  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 4 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+Hibernate: select produto0_.id_produto as id_produ1_3_0_, produto0_.categoria_id_categoria as categori8_3_0_, produto0_.descricao as descrica2_3_0_, produto0_.nome as nome3_3_0_, produto0_.url as url4_3_0_, produto0_.url_img as url_img5_3_0_, produto0_.valor_custo as valor_cu6_3_0_, produto0_.valor_venda as valor_ve7_3_0_, categoria1_.id_categoria as id_categ1_0_1_, categoria1_.descricao as descrica2_0_1_, categoria1_.nome as nome3_0_1_, categoria1_.url as url4_0_1_, categoria1_.url_img as url_img5_0_1_ from produto produto0_ inner join categoria categoria1_ on produto0_.categoria_id_categoria=categoria1_.id_categoria where produto0_.id_produto=?
+2018-02-04 12:02:28.283  INFO 2056 --- [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring FrameworkServlet ''
+2018-02-04 12:02:28.283  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization started
+2018-02-04 12:02:28.286  INFO 2056 --- [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : FrameworkServlet '': initialization completed in 3 ms
+Hibernate: insert into categoria (descricao, nome, url, url_img) values (?, ?, ?, ?)
+Hibernate: insert into produto (categoria_id_categoria, descricao, nome, url, url_img, valor_custo, valor_venda) values (?, ?, ?, ?, ?, ?, ?)
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="http://www.gradle.org">Gradle 3.5.1</a> at 04/02/2018 12:02:33</p>
+</div>
+</div>
+</body>
+</html>

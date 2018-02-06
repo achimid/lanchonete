@@ -3,51 +3,51 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout">
 
-      <div layout:fragment="passoOpcoesProduto">
-          <div class="box box-default">
-            <div class="box-header with-border">
-              <a class="btn btn-box-tool btn-block" data-widget="collapse">
-                <h3 class="box-title">Opções</h3>
+<div layout:fragment="passoConfirmar">
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <a class="btn btn-box-tool btn-block" data-widget="collapse">
+                <h3 class="box-title">Confirmar</h3>
+                <span class="label label-warning label-lg padding-left-8 lb-origem">Pedido da Mesa 01</span>
                 <div class="box-tools pull-right">
-                  <button class="btn btn-box-tool btn-collapse-opcoes-produto" data-widget="collapse">
-                    <i class="fa fa-minus pull-right"></i>
-                  </button>
+                    <button class="btn btn-box-tool btn-collapse-confirmar" data-widget="collapse">
+                        <i class="fa fa-minus pull-right"></i>
+                    </button>
                 </div><!-- /.box-tools -->
-              </a>
-            </div><!-- /.box-header -->
-            <div class="box-body">
-                <div class="container-fluid">
-                    <div class="form-group col-md-12">
-                        <input class="form-control hidden" type="text" name="produto.idProduto" th:value="${produto.idProduto}"/>
-                        <div class="form-group col-md-2">
-                            <label class="label-control"> Quantidade:</label>
-                            <div class="input-group">
-                                <span class="input-group-addon btn-remove-qtde"><i class="fa fa-minus-square-o" aria-hidden="true"></i></span>
-                                <input class="form-control" type="number" name="item.qtde" value="1"/>
-                                <span class="input-group-addon btn-add-qtde"><i class="fa fa-plus-square-o" aria-hidden="true"></i></span>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-10">
-                            <label class="label-control"> Descrição:</label>
-                            <div class="input-group">
-                                <span th:if="${#strings.isEmpty(produto.descricao)}"> Produto sem descrição!</span>
-                                <span th:if="not ${#strings.isEmpty(produto.descricao)}" th:text="${produto.descricao}" class="info-box-text wrap-2"></span>
-                            </div>
-                        </div>
+            </a>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            <div class="container-fluid">
+                <div class="line col-xs-12" th:each="item, itemIndex : ${itens}">
+                    <div class="col-xs-1">
+                        <a class="pull-left btnRemoverItem" href="javascript:void(0);" th:attr="data-item-index=${itemIndex.index}">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </a>
                     </div>
-
-                    <div class="col-md-12">
-                        <div class="text-center" th:if="${#lists.isEmpty(opcoes)}">
-                            <span> <b>Nenhuma opção encontrada! </b></span>
-                        </div>
+                    <div class="col-xs-9">
+                        <label th:text="${item.qtde + 'x'}" >2x </label>
+                        <label th:text="${item.produto.nome}" class="padding-left-8 js-produto-nome">Suco de Uva</label>
+                        <span class="hidden">
+                            (Com gelo e limão)
+                        </span>
+                        <span th:text="${'(' + item.observacao + ')'}" th:if="not ${#strings.isEmpty(item.observacao)}">
+                            (Obs: Adicionar mais gelo e açucar)
+                        </span>
                     </div>
-
-                    <div class="col-md-12 ">
-                        <button name="btnAdicionarItem" class="btn btn-primary pull-right">Adicionar</button>
+                    <div class="col-xs-2 pull-right text-right hidden-xs">
+                        <label th:text="${ 'R$  ' + #numbers.formatDecimal(item.valor, 0, 'DEFAULT', 2, 'DEFAULT')}"></label>
                     </div>
                 </div>
-
+                <!--<div class="line col-xs-12 text-right hidden-xs">
+                    <div class="col-xs-2 pull-right">
+                        <label>Total:</label>
+                        <label th:text="${ 'R$  ' + #numbers.formatDecimal(venda.valorFinal, 0, 'DEFAULT', 2, 'DEFAULT')}"></label>
+                    </div>
+                </div>-->
             </div>
-          </div><!-- /.box-body -->
-      </div><!-- /.box -->
+        </div>
+    </div><!-- /.box-body -->
+
+    <div id="passoPagamento" layout:include="pages/venda/passoPagamento :: passoPagamento"></div>
+</div><!-- /.box -->
 </html>

@@ -5,8 +5,7 @@
     height: 100%;
 }
 
-.btn-click:hover,
-.btn-click > span:hover{
+.btn-click:hover{
     background-color: #3c8dbc33;
 }
 
@@ -27,3 +26,65 @@
     white-space: normal !important;
 }
 
+.small-box.selected{
+    outline: 7px double #4e4b40c4;
+}
+
+.btn-forma-pagamento.selected{
+    outline: 5px double #497586c4;
+    background-color: #3c8dbc33;
+}
+
+.line {
+    /*border-bottom: solid 1px;*/
+   font-size: 16px;
+}
+
+.padding-left-8{
+    padding-left: 8px;
+}
+
+.margin-top-10{
+    margin-top: 10px !important;
+}
+
+.label-lg{
+    font-size: 14px;
+}
+
+.cpt{
+    text-transform: capitalize;
+}
+
+.btn-add-qtde,
+.btn-remove-qtde{
+    font-size: 18px;
+}
+
+.btn-add-qtde{
+    color: green;
+}
+
+.btn-remove-qtde{
+    color: red;
+}
+
+.small-box h3 {
+    font-size: 29px;
+}
+
+.main-footer{
+    height: calc(3em + 30px) !important;
+}
+
+.info-box-text{
+    padding-left: 20px !important;
+}
+
+.divCheckout{
+    width: 4em;
+}
+
+input.font-big{
+    font-size: 25px;
+}

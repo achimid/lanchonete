@@ -1,6 +1,7 @@
 package br.com.achimid.lanchonete.root.dto;
 
 import br.com.achimid.lanchonete.root.base.BaseDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class VendaDTO extends BaseDTO{
 
     private Long idVenda;
+    @JsonFormat(pattern = "dd/MM/yyyy hh:mm:ss")
     private Date dataVenda;
     private BigDecimal valorFinal;
     private List<VendaItemDTO> listaItens;

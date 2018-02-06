@@ -1,26 +1,77 @@
 $.venda = {
-  adicionarItem: function (idProduto, qtde) {
-    var _venda
-    if(sessionStorage.venda != undefined) _venda = JSON.parse(sessionStorage.venda);
+    adicionarItem: function (idProduto, qtde, observacao) {
+      var _venda = $.venda.getVenda();
+      var _item = {produto: { idProduto : idProduto}, qtde: qtde, observacao: observacao };
 
-    var _item = {produto: { idProduto : idProduto }, qtde: qtde};
-    if(_venda == undefined){
-        _venda = {listaItens : []}
-    }
-    _venda.listaItens.push(_item)
-    sessionStorage.venda = JSON.stringify(_venda);
-    return true;
-  },
+      _venda.listaItens.push(_item)
+
+      $.venda.setVenda(_venda);
+      return true;
+    },
+    getVenda: function () {
+        var _venda
+        if(sessionStorage.venda !== undefined && sessionStorage.venda !== 'undefined') _venda = JSON.parse(sessionStorage.venda);
+        if(_venda == undefined){
+            _venda = {listaItens : [],
+             pagamentos : [],
+             mesa: { idMesa: '', descricao : ''}}
+        }
+
+        return _venda;
+    },
+    setVenda: function (_venda) {
+        sessionStorage.venda = JSON.stringify(_venda);
+    },
   hasItem: function () {
-      var _venda
-      if(sessionStorage.venda != undefined) _venda = JSON.parse(sessionStorage.venda);
-
-      if(_venda == undefined) return false;
-      if(_venda.listaItens == undefined) return false;
+      var _venda = $.venda.getVenda();
+      if(_venda === undefined) return false;
+      if(_venda.listaItens === undefined) return false;
       if(_venda.listaItens.length === 0) return false;
 
       return true;
-  }
+  },
+  selecionaMesa: function (idMesa, descricao) {
+        var _venda = $.venda.getVenda();
+
+        _venda.mesa.idMesa = idMesa
+        _venda.mesa.descricao = descricao
+
+        $.venda.setVenda(_venda);
+  },
+  hasMesa: function () {
+        var _venda = $.venda.getVenda();
+        return _venda.mesa.idMesa !== '';
+    },
+  getMesa: function () {
+      var _venda = $.venda.getVenda();
+      return _venda.mesa;
+  },
+  removeItem: function (index) {
+    var _venda = $.venda.getVenda();
+
+    if(_venda.listaItens.length === 0) return false;
+
+    _venda.listaItens.splice(index);
+
+    $.venda.setVenda(_venda);
+    return true;
+  },
+  cleanVenda: function () {
+      sessionStorage.venda = undefined;
+  },
+  selecionaFormaPagamento: function (idFormaPagamento, valor) {
+
+      var _pagamentoVenda = { formaPagamento : { idFormaPagamento : idFormaPagamento, valor : valor}};
+      var _venda = $.venda.getVenda();
+
+      if(idFormaPagamento == null){
+        _venda.pagamentos = [];
+      }else{
+        _venda.pagamentos.push(_pagamentoVenda);
+      }
+
+      $.venda.setVenda(_venda);
+  },
 }
 
 function selecionaCategoria(){
@@ -28,9 +79,124 @@ function selecionaCategoria(){
     $("#passoProduto").load("/venda/passoProduto/" + idCategoria, init_passoProduto);
 }
 
+function selecionaFormaPagamento(){
+    if($(this).hasClass('selected')){
+        $(this).removeClass('selected');
+        $.venda.selecionaFormaPagamento(null, null);
+    }else{
+        $('.btn-forma-pagamento').removeClass('selected');
+        $(this).addClass('selected');
+        $.venda.selecionaFormaPagamento($('.btn-forma-pagamento.selected').data('idformapagamento'), 1.50);
+    }
+}
+
 function selecionaProduto(){
     var idProduto = parseInt($(this).data('idproduto'));
     $("#passoOpcoesProduto").load("/venda/passoOpcoesProduto/" + idProduto, init_passoDetalheProduto);
+}
+
+function selecionaMesa(){
+    if($(this).hasClass('selected')){
+        $(this).removeClass('selected');
+    }else{
+        $('.small-box').removeClass('selected');
+        $(this).addClass('selected');
+        $.venda.selecionaMesa($('.small-box.selected > .idMesa').val(), $('.small-box.selected > .idMesa').data('descricao'));
+        $('.btn-collapse-mesa').click();
+    }
+}
+
+function passoConfirmar(){
+    $.ajax({
+      type: "POST",
+      url: "/venda/passoConfirmar",
+      contentType: "application/json",
+      data: JSON.stringify($.venda.getVenda().listaItens) ,
+      success: function(data){
+        $('#passoConfirmar').html(data);
+        if($.venda.hasMesa()){
+            $('.lb-origem').text('Origem: ' + $.venda.getMesa().descricao);
+        }else{
+            $('.lb-origem').text('Origem: Balcão');
+        }
+      },
+      error : function(er){
+        alertify.error('Ocorreu um erro preparar o pedido.');
+      }
+    });
+}
+
+function btnConcluir(){
+    if(!$.venda.hasItem()){
+        alertify.error('Selecione ao menos um item');
+        return;
+    }
+
+    passoConfirmar();
+    $('#passoMesa').addClass('hidden');
+    $('#passoCategoria').addClass('hidden');
+    $('#passoProduto').html('');
+    $('#passoOpcoesProduto').html('');
+    $('#passoConfirmar').removeClass('hidden');
+    $('button[name="btnConcluir"]').addClass('hidden');
+    $('.checkout__close').click();
+    consolidaBtnFinalizar();
+    // seleciona forma de pagamento dinheiro por padrão
+    // fix para uma flag na api.
+    $('.btn-forma-pagamento').find('span:contains("Dinheiro")').get(0).click();
+}
+
+function btnFinalizar(){
+    if(!$.venda.hasItem()){
+        alertify.error('Nenhum item selecionado!');
+        return;
+    }
+
+    var _venda = {
+        'venda' : { 'listaItens' : $.venda.getVenda().listaItens},
+        'mesa' : { 'idMesa' : $.venda.getVenda().mesa.idMesa}
+    }
+
+    $.ajax({
+      type: "POST",
+      url: "/venda",
+      contentType: "application/json",
+      data: JSON.stringify(_venda) ,
+      success: function(data){
+            consolidaBtnFinalizar();
+            alertify.success('Pedido enviado!!');
+            setTimeout(function(){
+                location.reload();
+            },700)
+      },
+      error : function(er){
+        alertify.error('Ocorreu um erro ao enviar o pedido.');
+      }
+    });
+}
+
+function btnVoltar(){
+    $('#passoMesa').removeClass('hidden');
+    $('#passoCategoria').removeClass('hidden');
+    $('#passoProduto').removeClass('hidden');
+    $('#passoOpcoesProduto').removeClass('hidden');
+    $('#passoConfirmar').addClass('hidden');
+    consolidaBtnFinalizar();
+}
+
+function removerItem(){
+    var index = $(this).data('item-index');
+    if($.venda.removeItem(index)){
+        $(this).parent().parent().remove();
+        removeLinhaTableCheckout(index);
+        alertify.success('Item removido com sucesso!');
+    }else{
+        alertify.error('Ocorreu um erro ao remover o item!');
+    }
+
+    if(!$.venda.hasItem()){
+        btnVoltar(); // removeu todos os items, sai da tela de finalização.
+    }
 }
 
 function init_passoProduto(){
@@ -56,13 +222,29 @@ function remove_qtde_icon(){
 
 function adicionarItem(){
     var qtde = parseInt($('input[name="item.qtde"]').val());
-    var idProduto = $('input[name="produto.idProduto"]');
+    var idProduto = $('input[name="produto.idProduto"]').val();
+    var observacao = $('textarea[name="item.observacao"]').val();
+    var nome = $('.js-produto-nome').text();
 
-    if($.venda.adicionarItem(idProduto, qtde)){
+    if($.venda.adicionarItem(idProduto, qtde, observacao)){
+        addLinhaTableCheckout(nome, qtde, observacao);
         novoItem();
+        alertify.success('Item adicionado!')
     }else{
-        alert('Ocorreu um erro ao adicionar o item!');
+        alertify.warning('Ocorreu um erro ao adicionar o item!')
     }
+}
+
+function addLinhaTableCheckout(nome, qtde, observacao){
+    var linha = '<tr>' +
+                     '<td>' + nome + '<span> | ' + observacao + '</span></td>' +
+                     '<td>' + qtde + '</td>' +
+                 '</tr>';
+    $('.js-tb-itens tr:last').after(linha);
+}
+
+function removeLinhaTableCheckout(index){
+     $('.js-tb-itens tr').get(index + 1).remove();
 }
 
 function novoItem(){
@@ -70,6 +252,24 @@ function novoItem(){
     $("#passoOpcoesProduto").html('');
     $("#passoProduto").html('');
     consolidaBtnConluir();
+}
+
+function consolidaBtnFinalizar(){
+    if($.venda.hasItem()){
+        if($('#passoConfirmar').is(':visible')){
+            $('button[name="btnVoltar"]').removeClass('hidden');
+            $('button[name="btnFinalizar"]').removeClass('hidden');
+            $('button[name="btnConcluir"]').addClass('hidden');
+        }else{
+            $('button[name="btnVoltar"]').addClass('hidden');
+            $('button[name="btnFinalizar"]').addClass('hidden');
+            $('button[name="btnConcluir"]').removeClass('hidden');
+        }
+    }else{
+        $('button[name="btnVoltar"]').addClass('hidden');
+        $('button[name="btnFinalizar"]').addClass('hidden');
+        $('button[name="btnConcluir"]').addClass('hidden');
+    }
 }
 
 function consolidaBtnConluir(){
@@ -80,12 +280,69 @@ function consolidaBtnConluir(){
     }
 }
 
+
 // DOCUMENT READY SEMPRE NO FINAL
 $(document).ready(function(){
+
+    $.venda.cleanVenda();
+
     $(document).on('click', '.btn-categoria', selecionaCategoria);
     $(document).on('click', '.btn-produto', selecionaProduto);
     $(document).on('click', '.btn-add-qtde', add_qtde_icon);
     $(document).on('click', '.btn-remove-qtde', remove_qtde_icon);
+    $(document).on('click', '.btn-forma-pagamento', selecionaFormaPagamento);
     $(document).on('click', 'button[name="btnAdicionarItem"]', adicionarItem);
+    $(document).on('click', '.small-box', selecionaMesa);
+    $(document).on('click', 'button[name="btnVoltar"]', btnVoltar);
+    $(document).on('click', 'button[name="btnVoltar2"]', btnVoltar);
+    $(document).on('click', 'button[name="btnFinalizar"]', btnFinalizar);
+    $(document).on('click', 'button[name="btnConcluir"]', btnConcluir);
+    $(document).on('click', '.btnRemoverItem', removerItem);
+
+    // seleciona forma de pagamento por padrão - Dinheiro
+    //$('.btn-forma-pagamento').find('span:contains("Dinheiro")').get(0).click();
+
+    atalhos();
+    loadCheckout()
 });
 
+
+function loadCheckout(){
+
+    $('.divCheckout').html($('#divCheckout').html());
+    $('#divCheckout').remove();
+    $('.divCheckout').removeClass('hidden');
+
+    [].slice.call( document.querySelectorAll( '.checkout' ) ).forEach( function( el ) {
+        var openCtrl = el.querySelector( '.checkout__button' ),
+            closeCtrls = el.querySelectorAll( '.checkout__cancel' );
+
+        openCtrl.addEventListener( 'click', function(ev) {
+            ev.preventDefault();
+            classie.add( el, 'checkout--active' );
+            $('.checkout__order').css('width', '400px')
+        } );
+
+        [].slice.call( closeCtrls ).forEach( function( ctrl ) {
+            ctrl.addEventListener( 'click', function() {
+                classie.remove( el, 'checkout--active' );
+                $('.checkout__order').css('width', '0px')
+            } );
+        } );
+    } );
+}
+
+
+function atalhos(){
+    $("body").keydown(function(e){
+         var keyCode = e.keyCode || e.which;
+         if(keyCode == 115){ // F4
+            e.preventDefault();
+            atalhoF4();
+         }
+    });
+}
+
+function atalhoF4(){
+    btnConcluir();
+}

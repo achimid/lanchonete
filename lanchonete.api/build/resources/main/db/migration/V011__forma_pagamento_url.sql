@@ -1,0 +1,1 @@
+ALTER TABLE forma_pagamento ADD COLUMN url_img VARCHAR(500);

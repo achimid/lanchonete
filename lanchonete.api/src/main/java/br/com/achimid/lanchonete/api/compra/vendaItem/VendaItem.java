@@ -36,4 +36,6 @@ public class VendaItem extends EntidadeBase {
     @NumberFormat(pattern = "#,##0.00")
     private BigDecimal qtde;
 
+    private String observacao;
+
 }

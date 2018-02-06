@@ -5,8 +5,7 @@
     height: 100%;
 }
 
-.btn-click:hover,
-.btn-click > span:hover{
+.btn-click:hover{
     background-color: #3c8dbc33;
 }
 
@@ -29,6 +28,11 @@
 
 .small-box.selected{
     outline: 7px double #4e4b40c4;
+}
+
+.btn-forma-pagamento.selected{
+    outline: 5px double #497586c4;
+    background-color: #3c8dbc33;
 }
 
 .line {
@@ -79,4 +83,8 @@
 
 .divCheckout{
     width: 4em;
+}
+
+input.font-big{
+    font-size: 25px;
 }

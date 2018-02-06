@@ -8,6 +8,7 @@ import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamento;
 import br.com.achimid.lanchonete.api.compra.vendaPagamento.VendaPagamentoRepository;
 import br.com.achimid.lanchonete.api.mesa.Mesa;
 import br.com.achimid.lanchonete.api.mesa.MesaStatus;
+import br.com.achimid.lanchonete.api.produto.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +32,9 @@ public class VendaService {
     @Autowired
     private VendaMesaRepository vendaMesaRepository;
 
+    @Autowired
+    private ProdutoRepository produtoRepository;
+
     public List<Venda> findAll(){
         return (List<Venda>) vendaRepository.findAll();
     }
@@ -48,7 +52,10 @@ public class VendaService {
         }
 
         venda.setDataVenda(GregorianCalendar.getInstance().getTime());
+        this.consolidaProdutosItens(venda);
         this.calculaValorFinal(venda);
+
+        venda.getListaItens().forEach(item -> item.setVenda(venda));
 
         if(mesa == null || mesa.getIdMesa() == null){
             //Venda sem Mesa
@@ -58,8 +65,6 @@ public class VendaService {
             }
 
             venda.getPagamentos().forEach(pagamento -> pagamento.setVenda(venda));
-            venda.getListaItens().forEach(item -> item.setVenda(venda));
-
             this.consolidaFormasPagamentos(venda);
 
             vendaRepository.save(venda);
@@ -82,7 +87,19 @@ public class VendaService {
         return venda;
     }
 
-    private void calculaValorFinal(Venda venda){
+    public void consolidaProdutosItens(Venda venda){
+        venda.getListaItens().forEach( item -> {
+            if(item.getProduto() != null && item.getProduto().getIdProduto() != null) {
+                item.setProduto(produtoRepository.findOne(item.getProduto().getIdProduto()));
+            }else{
+                throw new RuntimeException("Lista de itens contem produto inválido");
+            }
+            if(item.getValor() == null)
+                item.setValor(item.getQtde().multiply(item.getProduto().getValorVenda()));
+        });
+    }
+
+    public void calculaValorFinal(Venda venda){
         if(venda == null) throw new IllegalArgumentException("A venda não pode ser nulla.");
 
         BigDecimal valorFinal = BigDecimal.ZERO;

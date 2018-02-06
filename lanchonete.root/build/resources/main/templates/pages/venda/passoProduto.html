@@ -26,7 +26,7 @@
             <div class="info-box btn-click btn-produto" th:attr="data-idproduto=${produto.idProduto}">
                   <span class="info-box-icon">
                     <img th:if="not ${#strings.isEmpty(produto.urlImg)}" th:src="${produto.urlImg}" class="img-thumbnail" th:title="${produto.nome}"/>
-                    <img th:if="${#strings.isEmpty(produto.urlImg)}" src="http://placehold.it/600x600" class="img-thumbnail" th:title="${produto.nome}"/>
+                    <img th:if="${#strings.isEmpty(produto.urlImg)}" src="http://placehold.it/90x90" class="img-thumbnail" th:title="${produto.nome}"/>
                   </span>
               <div class="info-box-content">
                 <span class="info-box-number">

@@ -1,0 +1,1 @@
+ALTER TABLE venda_item ADD COLUMN observacao VARCHAR(500);

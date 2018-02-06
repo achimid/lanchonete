@@ -24,7 +24,6 @@ public class VendaMesa extends EntidadeBase {
     @GeneratedValue
     private Long idVendaMesa;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "venda_id_venda")
     private Venda venda;

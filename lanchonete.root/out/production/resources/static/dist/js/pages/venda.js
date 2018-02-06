@@ -12,7 +12,9 @@ $.venda = {
         var _venda
         if(sessionStorage.venda !== undefined && sessionStorage.venda !== 'undefined') _venda = JSON.parse(sessionStorage.venda);
         if(_venda == undefined){
-            _venda = {listaItens : [], mesa: { idMesa: '', descricao : ''}}
+            _venda = {listaItens : [],
+             pagamentos : [],
+             mesa: { idMesa: '', descricao : ''}}
         }
 
         return _venda;
@@ -56,12 +58,36 @@ $.venda = {
   },
   cleanVenda: function () {
       sessionStorage.venda = undefined;
-  }
+  },
+  selecionaFormaPagamento: function (idFormaPagamento, valor) {
+
+      var _pagamentoVenda = { formaPagamento : { idFormaPagamento : idFormaPagamento, valor : valor}};
+      var _venda = $.venda.getVenda();
+
+      if(idFormaPagamento == null){
+        _venda.pagamentos = [];
+      }else{
+        _venda.pagamentos.push(_pagamentoVenda);
+      }
+
+      $.venda.setVenda(_venda);
+  },
 }
 
 function selecionaCategoria(){
     var idCategoria = parseInt($(this).data('idcategoria'));
     $("#passoProduto").load("/venda/passoProduto/" + idCategoria, init_passoProduto);
+}
+
+function selecionaFormaPagamento(){
+    if($(this).hasClass('selected')){
+        $(this).removeClass('selected');
+        $.venda.selecionaFormaPagamento(null, null);
+    }else{
+        $('.btn-forma-pagamento').removeClass('selected');
+        $(this).addClass('selected');
+        $.venda.selecionaFormaPagamento($('.btn-forma-pagamento.selected').data('idformapagamento'), 1.50);
+    }
 }
 
 function selecionaProduto(){
@@ -93,11 +119,19 @@ function passoConfirmar(){
         }else{
             $('.lb-origem').text('Origem: Balcão');
         }
+      },
+      error : function(er){
+        alertify.error('Ocorreu um erro preparar o pedido.');
       }
     });
 }
 
 function btnConcluir(){
+    if(!$.venda.hasItem()){
+        alertify.error('Selecione ao menos um item');
+        return;
+    }
+
     passoConfirmar();
     $('#passoMesa').addClass('hidden');
     $('#passoCategoria').addClass('hidden');
@@ -107,6 +141,9 @@ function btnConcluir(){
     $('button[name="btnConcluir"]').addClass('hidden');
     $('.checkout__close').click();
     consolidaBtnFinalizar();
+    // seleciona forma de pagamento dinheiro por padrão
+    // fix para uma flag na api.
+    $('.btn-forma-pagamento').find('span:contains("Dinheiro")').get(0).click();
 }
 
 function btnFinalizar(){
@@ -116,7 +153,8 @@ function btnFinalizar(){
     }
 
     var _venda = {
-        'venda' : { 'listaItens' : $.venda.getVenda().listaItens}
+        'venda' : { 'listaItens' : $.venda.getVenda().listaItens},
+        'mesa' : { 'idMesa' : $.venda.getVenda().mesa.idMesa}
     }
 
     $.ajax({
@@ -128,9 +166,11 @@ function btnFinalizar(){
             consolidaBtnFinalizar();
             alertify.success('Pedido enviado!!');
             setTimeout(function(){
-                // no final da reaload e limpa a venda
                 location.reload();
             },700)
+      },
+      error : function(er){
+        alertify.error('Ocorreu um erro ao enviar o pedido.');
       }
     });
 }
@@ -240,6 +280,7 @@ function consolidaBtnConluir(){
     }
 }
 
+
 // DOCUMENT READY SEMPRE NO FINAL
 $(document).ready(function(){
 
@@ -249,6 +290,7 @@ $(document).ready(function(){
     $(document).on('click', '.btn-produto', selecionaProduto);
     $(document).on('click', '.btn-add-qtde', add_qtde_icon);
     $(document).on('click', '.btn-remove-qtde', remove_qtde_icon);
+    $(document).on('click', '.btn-forma-pagamento', selecionaFormaPagamento);
     $(document).on('click', 'button[name="btnAdicionarItem"]', adicionarItem);
     $(document).on('click', '.small-box', selecionaMesa);
     $(document).on('click', 'button[name="btnVoltar"]', btnVoltar);
@@ -257,6 +299,10 @@ $(document).ready(function(){
     $(document).on('click', 'button[name="btnConcluir"]', btnConcluir);
     $(document).on('click', '.btnRemoverItem', removerItem);
 
+    // seleciona forma de pagamento por padrão - Dinheiro
+    //$('.btn-forma-pagamento').find('span:contains("Dinheiro")').get(0).click();
+
+    atalhos();
     loadCheckout()
 });
 
@@ -284,4 +330,19 @@ function loadCheckout(){
             } );
         } );
     } );
+}
+
+
+function atalhos(){
+    $("body").keydown(function(e){
+         var keyCode = e.keyCode || e.which;
+         if(keyCode == 115){ // F4
+            e.preventDefault();
+            atalhoF4();
+         }
+    });
+}
+
+function atalhoF4(){
+    btnConcluir();
 }
