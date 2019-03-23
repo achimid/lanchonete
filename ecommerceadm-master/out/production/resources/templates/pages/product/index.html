@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="pages/layout/defaultLayout">
+  <head>
+    <title>Products</title>
+    <style>
+        .cls-img{
+          height: 30px;
+          width: 30px;
+        }
+    </style>
+  </head>
+  <body >
+      <section layout:fragment="body">
+        <section class="content-header">
+          <h1>
+            Products
+            <small>list of products</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Forms</a></li>
+            <li class="active">Products</li>
+          </ol>
+          <a class="btn btn-primary" th:href="@{/products/new}"> New Product </a>
+        </section>
+
+        <section class="content">
+          <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Table of products</h3>
+                <div class="box-tools">
+                  <div class="input-group">
+                    <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>ID</th>
+                    <th>Photo</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th class="col-action-table">Action</th>
+                  </tr>
+                  <tr th:each="product : ${products}">
+                    <td th:text="${product.id}">183</td>
+                    <td>
+                      <a href="#" class="focusme">
+                        <img th:if="${not #strings.isEmpty(product.url)}" th:src="${product.url}" alt="Image of Product" class="cls-img"/>
+                        <img th:if="${#strings.isEmpty(product.url)}" src="http://placehold.it/30x30" alt="Image of Product" class="cls-img"/>
+                      </a>
+                    </td>
+                    <td th:text="${product.name}">John Doe</td>
+                    <td th:text="${'$' + #numbers.formatDecimal(product.priceSale, 0, 'DEFAULT', 2, 'DEFAULT')}">15,50</td>
+                    <td th:text="${product.description}"><span class="label label-success">Description</span></td>
+                    <td class="col-action-table">
+                      <a class="btn btn-success" th:href="@{products/{id}(id=${product.id})}" title="Edit product">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                      <a class="btn btn-danger js-delete" href="#" data-toggle="modal" data-target="#excludeModal" title="Delete product">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div><!-- /.box-body -->
+            </div><!-- /.box -->
+          </div>
+          </div>
+        </section>
+
+
+        <div id="excludeModal" class="modal modal-primary fade"  role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Deseja realmente excluir este item?</h4>
+              </div>
+              <div class="modal-body">
+                <p>O item selecionado será excluido permanentemente.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sair</button>
+                  <button class="btn btn-primary" >Continuar</button>
+                </div>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+      </section>
+
+
+
+      <section layout:fragment="javascript-extra">
+          <script>
+              $(".focusme").focusin(function() {
+                $(this).find('img').animate({"width": "200px", "height": "200px"}, 1000);
+              });
+              $(".focusme").focusout(function() {
+                $(this).find('img').animate({"width": "30px", "height": "30px"}, 1000);
+              });
+
+                $('#myModal').on('show', function() {
+                    var id = $(this).data('id'),
+                        removeBtn = $(this).find('.danger');
+                })
+
+                $('.confirm-delete').on('click', function(e) {
+                    e.preventDefault();
+
+                    var id = $(this).data('id');
+                    $('#myModal').data('id', id).modal('show');
+                });
+
+                $('#btnYes').click(function() {
+                    // handle deletion here
+                    var id = $('#myModal').data('id');
+                    $('[data-id='+id+']').remove();
+                    $('#myModal').modal('hide');
+                });
+
+
+          </script>
+      </section>
+  </body>
+</html>

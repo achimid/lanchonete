@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="pages/layout/defaultLayout">
+  <head>
+    <title>Categories</title>
+  </head>
+  <body >
+      <section layout:fragment="body">
+        <section class="content-header">
+          <h1>
+            Products
+            <small>list of categories</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Forms</a></li>
+            <li class="active">Categories</li>
+          </ol>
+          <a class="btn btn-primary" th:href="@{/categories/new}"> New Category </a>
+        </section>
+
+        <section class="content">
+          <div class="row">
+          <div class="col-xs-12">
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Table of categories</h3>
+                <div class="box-tools">
+                  <div class="input-group">
+                    <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Search"/>
+                    <div class="input-group-btn">
+                      <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- /.box-header -->
+              <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th class="col-action-table">Action</th>
+                  </tr>
+                  <tr th:each="cat : ${categories}">
+                    <td th:text="${cat.id}">183</td>
+                    <td th:text="${cat.name}">Pizza</td>
+                    <td th:text="${cat.description}">Made o cheese</td>
+                    <td class="col-action-table">
+                      <a class="btn btn-success" th:href="@{categories/{id}(id=${cat.id})}" title="Edit Category">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                      </a>
+                      <a class="btn btn-danger js-delete" href="#" data-toggle="modal" data-target="#excludeModal" title="Delete product">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div><!-- /.box-body -->
+            </div><!-- /.box -->
+          </div>
+          </div>
+        </section>
+
+
+        <div id="excludeModal" class="modal modal-primary fade"  role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Deseja realmente excluir este item?</h4>
+              </div>
+              <div class="modal-body">
+                <p>O item selecionado será excluido permanentemente.</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Sair</button>
+                  <button class="btn btn-primary" >Continuar</button>
+                </div>
+              </div><!-- /.modal-content -->
+          </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+      </section>
+
+
+
+      <section layout:fragment="javascript-extra">
+
+      </section>
+  </body>
+</html>

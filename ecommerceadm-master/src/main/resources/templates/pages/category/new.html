@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="https://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="https://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="pages/layout/defaultLayout">
+  <head>
+    <title>Product</title>
+  </head>
+  <body >
+      <section layout:fragment="body">
+        <section class="content-header">
+          <h1>
+            Product
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Forms</a></li>
+            <li class="active">Category</li>
+          </ol>
+        </section>
+
+        <section class="content">
+          <div class="container-fluid">
+
+            <!-- Errors
+            <div th:if="${product.errors}">
+              <ul>
+                <li th:each="error : ${product.errors}" th:text="${error}"></li>
+              </ul>
+            </div>-->
+
+            <!-- Form -->
+            <form th:action="@{/categories/new}" method="POST" th:object="${category}">
+                    <div class="form-group col-md-1 hidden">
+                        <label class="label-control"> Id:</label>
+                        <input class="form-control" th:field="*{id}"/>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label class="label-control"> Name:</label>
+                        <input class="form-control" type="text" th:field="*{name}" required="true"/>
+                    </div>
+
+                    <div class="form-group col-md-7">
+                        <label class="label-control"> Description:</label>
+                        <input class="form-control" type="text" th:field="*{description}" required="true"/>
+                    </div>
+
+
+
+                    <div class="col-md-12">
+                        <div class="text-right">
+                            <a th:href="@{/categories}" class="btn btn-default pull-left">Back</a>
+                            <a th:if="not ${#strings.isEmpty(category.id)}"
+                               th:href="@{/categories/delete/{id}(id=${category.id})}" class="btn btn-danger js-delete">Delete</a>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                    </div>
+
+            </form>
+          </div>
+        </section>
+      </section>
+
+      <section layout:fragment="javascript-extra">
+          <script>
+          </script>
+      </section>
+
+  </body>
+</html>

@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS categories (
+  id bigint(20) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  description varchar(255) DEFAULT NULL,
+  name varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
